@@ -1,0 +1,162 @@
+body{
+    margin: 0;
+    padding: 0;
+    font-family: "Montserrat", sans-serif;
+    background-color: #ffffff;
+}
+
+
+/* The entire scrollbar */
+::-webkit-scrollbar {
+    width: 2px;
+    height: 12px;
+}
+
+/* The scrollbar track (the part the thumb slides within) */
+::-webkit-scrollbar-track {
+    background-color: #f1f1f1;
+    border-radius: 10px;
+}
+
+/* The scrollbar thumb (the draggable part) */
+::-webkit-scrollbar-thumb {
+    background-color: #4eadad;
+    border-radius: 10px;
+    transition: background-color 0.3s ease;
+}
+
+/* The thumb when hovered */
+::-webkit-scrollbar-thumb:hover {
+    background-color: #ff0000;
+}
+
+/* The scrollbar corner (where both horizontal and vertical scrollbars meet) */
+::-webkit-scrollbar-corner {
+    background-color: #f1f1f1; /* Corner color */
+}
+
+.nav{
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1vw 5vw;
+    background-color: #33333300;
+    color: white;
+    font-size: 1.2rem;
+    font-weight: bold;
+    padding-top: 40px ;
+    text-transform: uppercase;
+    z-index: 10;
+}
+
+.nav ul{
+    list-style-type: none;
+    display: flex;
+    align-items: center;
+    align-content: center;
+    gap: 4vw;
+}
+.nav ul li a{
+    text-decoration: none;
+    color: white;
+}
+
+.nav img.logo {
+    margin: -20px;
+    height: 80px;
+    width: auto;
+}
+
+.page{
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    width: 100%;
+    background-color: rgb(255, 255, 255);
+}
+
+#page1{
+    background-image: url('https://images.unsplash.com/photo-1670250721717-889b17349fc4?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+    background-size: cover;
+    background-position: center;    
+}
+#page1::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(73, 73, 73, 0.118); /* Semi-transparent white */
+    backdrop-filter: blur(7px);
+    z-index: 1;
+}
+
+.hero{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 70vh;
+    z-index: 10;
+}
+
+.hero h1{
+    font-size: 7rem;
+    color: white;
+    text-align: center;
+    text-transform: uppercase;
+    z-index: 10;
+}
+
+.hero p{
+    margin-top: -60px;
+    width: 60%;
+    font-size: 1.2rem;
+    color: white;
+    text-align: center;
+    z-index: 10;
+    line-height: 2.5;
+}
+
+button {
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 600;
+    background-color: #4eadad;
+    color: #ffffff;
+    text-transform: uppercase;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+button:hover {
+    background-color: #4eadad;
+}
+
+button img{
+    width: 20px;
+    height: auto;
+    margin-right: 10px;
+}
+
+.hero a{
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 600;
+    background-color: #4eadad;
+    color: #ffffff;
+    text-transform: uppercase;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    text-decoration: none;
+    margin-top: 20px;
+}
