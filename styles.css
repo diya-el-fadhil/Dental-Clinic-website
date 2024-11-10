@@ -9,7 +9,7 @@ body{
 /* The entire scrollbar */
 ::-webkit-scrollbar {
     width: 2px;
-    height: 12px;
+    height: 2px;
 }
 
 /* The scrollbar track (the part the thumb slides within) */
@@ -109,6 +109,7 @@ body{
     text-align: center;
     text-transform: uppercase;
     z-index: 10;
+    overflow: hidden;
 }
 
 .hero p{
