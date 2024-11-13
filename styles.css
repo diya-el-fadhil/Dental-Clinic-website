@@ -3,6 +3,7 @@ body{
     padding: 0;
     font-family: "Montserrat", sans-serif;
     background-color: #ffffff;
+    overflow-x: hidden;
 }
 
 
@@ -260,26 +261,46 @@ button img{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    max-height: 90px;
-    width: 100%;
-    padding: 20px;
-    margin-top: 30px;
+    height: 60px;
+    max-width: 100%;
+    width: 95%;
+    padding: 40px;
+    margin: 30px auto;
     background-color: #4eadad;
     color: white;
+    gap: 40px;
 }
 
 .info-item {
     flex: 1;
-    text-align: center;
-    padding: 10px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 15px;
 }
 
 .info-item img {
     width: 80px;
     height: 80px;
     object-fit: cover;
-    border-radius: 50%;
+    flex-shrink: 0;
 }
+
+.info-item-content {
+    text-align: left;
+}
+
+.info-item-content h3 {
+    margin: 0 0 8px 0;
+    font-size: 1.2rem;
+}
+
+.info-item-content p {
+    margin: 0;
+    font-size: 0.9rem;
+    opacity: 0.9;
+}
+
 
 .divider {
     width: 1px;
@@ -302,16 +323,28 @@ button img{
 /* Ensure carousel-track fills the container */
 .carousel-track {
     display: flex;
-    gap: 1.5rem;
+    gap: 2.5rem; /* Increased gap between items */
     transition: transform 0.6s cubic-bezier(0.25, 0.1, 0.25, 1);
     width: fit-content;
     margin: 0 auto;
     padding: 20px;
-    clip-path: inset(0 10.5% 0 10.5%);
-    -webkit-clip-path: inset(0 10.5% 0 10.5%);
+    clip-path: inset(0 8% 0 8%); /* Adjusted clip path for new layout */
+    -webkit-clip-path: inset(0 8% 0 8%);
     position: relative;
     z-index: 1;
 }
+
+.carousel-item {
+    position: relative;
+    border-radius: 1rem;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.5s ease;
+    height: 400px;
+    width: 280px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
 
 /* Position buttons */
 .carousel-btn {
@@ -350,16 +383,6 @@ button img{
     cursor: not-allowed;
 }
 
-.carousel-item {
-    position: relative;
-    border-radius: 1rem;
-    overflow: hidden;
-    cursor: pointer;
-    transition: all 0.5s ease;
-    height: 400px;
-    width: 100px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-}
 
 .carousel-item img {
     width: 100%;
@@ -401,4 +424,62 @@ button img{
     color: #333;
     margin-bottom: 2rem;
     font-weight: 600;
+}
+
+/* Page 4 Styles */
+/* Page 4 Styles */
+#page4 {
+    width: 100vw;
+    max-width: 100%;
+    padding: 20px ;
+    box-sizing: border-box;
+    background-color: #2a2a2a;
+    text-align: center;
+    color: #fff;
+}
+
+#page4 h1 {
+    margin-bottom: 20px;
+    font-size: 2em;
+    color: #ffffff;
+}
+
+/* Flex container for items */
+.item-container {
+    margin-top: 80px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px; /* Reduced gap between items */
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+/* Individual item styling */
+.item {
+    width: 240px; /* Fixed width */
+    height: 250px; /* Fixed height */
+    background-color: #fff;
+    padding: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+    text-align: center;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.item img {
+    width: 100%;
+    height: 150px; /* Fixed height for the image */
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.item p {
+    margin: 10px 0 0;
+    font-size: 1em;
+    color: #555;
 }
