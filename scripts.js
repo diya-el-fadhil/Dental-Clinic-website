@@ -415,3 +415,42 @@ function initializeCarousel() {
 }
 
 document.addEventListener('DOMContentLoaded', initializeCarousel);
+
+
+// Function to update card details
+function updateCard() {
+    const fullName = document.getElementById('fullName').value || 'XXXX';
+    const age = document.getElementById('age').value || 'XX';
+    const gender = document.getElementById('gender').value || '-';
+    const phone = document.getElementById('phone').value || '+XX XXX XXX XXXX';
+    const email = document.getElementById('email').value || 'XXXX@GMAIL.COM';
+    const appointmentDate = document.getElementById('appointmentDate').value 
+        ? new Date(document.getElementById('appointmentDate').value).toLocaleDateString() 
+        : 'XX-XX-XXXX';
+
+    // Update character image based on gender
+    const characterImage = document.getElementById('characterImage');
+    if (gender === 'male') {
+        characterImage.src = "https://cdn1.iconfinder.com/data/icons/website-internet/48/website_-_male_user-512.png";
+    } else if (gender === 'female') {
+        characterImage.src = "https://cdn1.iconfinder.com/data/icons/website-internet/48/website_-_female_user-512.png";
+    } else {
+        characterImage.src = "https://www.svgrepo.com/show/316857/profile-simple.svg";
+    }
+
+    // Update card fields
+    document.getElementById('nameDisplay').textContent = `${fullName}`;
+    document.getElementById('ageDisplay').textContent = `${age}`;
+    document.getElementById('phoneDisplay').textContent = `${phone}`;
+    document.getElementById('emailDisplay').textContent = `${email}`;
+    document.getElementById('dateDisplay').textContent = `${appointmentDate}`;
+}
+
+// Add event listeners to all input fields
+const inputs = document.querySelectorAll('input, select');
+inputs.forEach(input => {
+    input.addEventListener('input', updateCard);
+});
+
+// Initial update
+updateCard();
