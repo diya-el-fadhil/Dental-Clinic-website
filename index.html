@@ -7,6 +7,12 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Micro+5&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Micro+5&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Silkscreen:wght@400;700&display=swap" rel="stylesheet">
     <title>Gasals</title>
 </head>
 <body>
@@ -191,67 +197,59 @@
     </div>
 
     <div class="page" id="page6">
-
-        <div class="form-container">
-            <h1>Book An Appointment</h1>
-            <form id="appointmentForm">
-                <!-- Name and Email in the same row -->
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="name"></label>
-                        <input type="text" id="name" name="name" placeholder="Enter your name" required>
-                    </div>
-    
-                    <div class="form-group">
-                        <label for="email"></label>
-                        <input type="email" id="email" name="email" placeholder="Enter your email" required>
-                    </div>
+        <div class="form-section6">
+            <h1 id="page6h">Doctor Appointment</h1>
+            <div class="form-row6">
+                <div class="form-group6">
+                    <label for="fullName">Full Name</label>
+                    <input class="page6input" type="text" id="fullName" placeholder="Enter your full name">
                 </div>
-    
-                <!-- Phone Number and Existing Patient Checkbox in the same row -->
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="phone"></label>
-                        <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" required>
-                    </div>
-    
-                    <div class="checkbox-wrapper-4">
-                        <input class="inp-cbx" id="existingPatient" type="checkbox" name="existingPatient"/>
-                        <label class="cbx" for="existingPatient"><span>
-                        <svg width="12px" height="10px">
-                          <use xlink:href="#check-4"></use>
-                        </svg></span><span>Existing Patient</span></label>
-                        <svg class="inline-svg">
-                          <symbol id="check-4" viewbox="0 0 12 10">
-                            <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
-                          </symbol>
-                        </svg>
-                      </div>
-                    </div>
-    
-                <!-- Preferred Date and Preferred Time in the same row -->
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="date">Preferred Date:</label>
-                        <input type="date" id="date" name="date" required>
-                    </div>
-    
-                    <div class="form-group">
-                        <label for="time">Preferred Time:</label>
-                        <input type="time" class="form-control" id="preferredTime" name="preferredTime" placeholder="Preferred Time">
-                    </div>
+                <div class="form-group6">
+                    <label for="age">Age</label>
+                    <input class="page6input" type="number" id="age" placeholder="Enter your age" min="0" max="150">
                 </div>
-    
-                <!-- Comments Section -->
-                <div class="form-group">
-                    <label for="comments"></label>
-                    <textarea id="comments" name="comments" placeholder="Comments"></textarea>
-                </div>
-    
-                <!-- Submit Button -->
-                <button type="submit" class="submit-btn">Submit</button>
-            </form>
+            </div>
+            <div class="form-group6">
+                <label for="gender">Gender</label>
+                <select id="gender">
+                    <option value="">Select Gender</option>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                </select>
+            </div>
+            <div class="form-group6">
+                <label for="phone">Phone Number</label>
+                <input class="page6input" type="tel" id="phone" placeholder="Enter phone number">
+            </div>
+            <div class="form-group6">
+                <label for="email">Email ID</label>
+                <input class="page6input" type="email" id="email" placeholder="Enter email address">
+            </div>
+            <div class="form-group6">
+                <label for="appointmentDate">Preferred Date</label>
+                <input class="page6input" type="date" id="appointmentDate">
+            </div>
         </div>
+        <div class="preview-section6">
+            <div class="appointment-card">
+                <div class="card-header">
+                    <div class="card-title">APPOINTMENT CARD</div>
+                </div>
+                <div class="card-content6">
+                    <div class="card-photo">
+                        <img id="characterImage" src="./assets/NOP.jpg" alt="character">
+                    </div>
+                    <div class="card-details">
+                        <div class="card-field" id="nameDisplay">XXXX</div>
+                        <div class="card-field" id="ageDisplay">XX</div>
+                        <div class="card-field" id="phoneDisplay">+XX XXXXXXXXXX</div>
+                        <div class="card-field" id="emailDisplay">XXXX@GMAIL.COM</div>
+                        <div class="card-field" id="dateDisplay">XX-XX-XXXX</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
     
     <div class="page" id="page7">

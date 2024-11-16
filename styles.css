@@ -433,7 +433,6 @@ button img{
 }
 
 /* Page 4 Styles */
-/* Page 4 Styles */
 #page4 {
     width: 100vw;
     max-width: 100%;
@@ -561,191 +560,181 @@ button img{
 /* Page6 Styling */
 #page6 {
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
     padding: 20px;
 }
 
-h1 {
-    margin-bottom: 20px;
+#page6h{
+    margin-bottom: 40px;
+    font-size: 40px;
     color: #4eadad;
+    text-align: center;
+    text-transform: uppercase;
 }
 
-/* Form Container */
-.form-container {
-    width: 100%;
-    max-width: 1200px;
-    max-height: 1000px;
-    padding: 20px;
-    background-color: #eeeeeebd;
-    border: 1px solid #4eadadaa;
-    border-radius: 8px;
-}
-
-/* Form Row */
-.form-row {
-    display: flex;
-    justify-content: space-between;
-    gap: 20px;
-    margin-bottom: 15px;
-}
-
-/* Form Group */
-.form-group {
+.form-section6 {
     flex: 1;
-    display: flex;
-    flex-direction: column;
+    padding: 20px;
+    border: 1px solid;
+    border-radius: 30px;
+    background-color: #f8f8f8;
+    border-color: #989898;
+    margin-left: 40px;
 }
 
-.form-group label {
-    font-weight: 500;
-    margin-bottom: 5px;
-    color: #333;
-}
-
-/* Minimal Input Styles */
-.form-group input,
-.form-group textarea {
-    padding: 8px 0;
-    font-size: 16px;
-    border: none;
-    border-bottom: 2px solid #ccc;
-    background-color: transparent;
-    color: #333;
-    outline: none;
-    transition: border-color 0.3s ease;
-}
-
-.form-group input:focus,
-.form-group textarea:focus {
-    border-bottom-color: #4eadad;
-}
-
-/* Checkbox Group */
-.checkbox-group {
+.preview-section6 {
+    flex: 1;
+    padding: 20px;
     display: flex;
     align-items: center;
-    flex-direction: row;
-    gap: 10px;
+    justify-content: center;
 }
 
-/* Comments Section */
-textarea {
-    resize: vertical;
-    height: 100px;
+.form-row6 {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 20px;
 }
 
-.submit-btn {
-    margin-top: 20px;
-  }
+.form-group6 {
+    margin-bottom: 20px;
+    flex: 1;
 
-  .submit-btn:hover {
-    background-color: #4eadadbc;
-  }
+}
 
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #333;
+}
 
-  .checkbox-wrapper-4 * {
-    box-sizing: border-box;
+input, select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+select {
+    background-color: white;
+}
+
+.page6input::placeholder {
+    padding-left: 9px;
+    font-family: "Montserrat", sans-serif;
+    font-size: 15px;
+    color: #888;
+    font-style: italic;
   }
-  .checkbox-wrapper-4 .cbx {
-    -webkit-user-select: none;
-    user-select: none;
-    cursor: pointer;
-    padding: 6px 8px;
-    border-radius: 6px;
-    overflow: hidden;
-    transition: all 0.2s ease;
-    display: inline-block;
-  }
-  .checkbox-wrapper-4 .cbx:not(:last-child) {
-    margin-right: 6px;
-  }
-  .checkbox-wrapper-4 .cbx:hover {
-    background: rgba(0,119,255,0.06);
-  }
-  .checkbox-wrapper-4 .cbx span {
-    float: left;
-    vertical-align: middle;
-    transform: translate3d(0, 0, 0);
-  }
-  .checkbox-wrapper-4 .cbx span:first-child {
+  
+
+.appointment-card {
+    width: 450px;
+    height: auto;
+    background: #4eadad;
+    border-radius: 15px;
+    padding: 20px;
+    color: white;
     position: relative;
-    width: 18px;
-    height: 18px;
-    border-radius: 4px;
-    transform: scale(1);
-    border: 1px solid #cccfdb;
-    transition: all 0.2s ease;
-    box-shadow: 0 1px 1px rgba(0,16,75,0.05);
-  }
-  .checkbox-wrapper-4 .cbx span:first-child svg {
-    position: absolute;
-    top: 3px;
-    left: 2px;
-    fill: none;
-    stroke: #fff;
-    stroke-width: 2;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-    stroke-dasharray: 16px;
-    stroke-dashoffset: 16px;
-    transition: all 0.3s ease;
-    transition-delay: 0.1s;
-    transform: translate3d(0, 0, 0);
-  }
-  .checkbox-wrapper-4 .cbx span:last-child {
-    padding-left: 8px;
-    line-height: 18px;
-  }
-  .checkbox-wrapper-4 .cbx:hover span:first-child {
-    border-color: #07f;
-  }
-  .checkbox-wrapper-4 .inp-cbx {
-    position: absolute;
-    visibility: hidden;
-  }
-  .checkbox-wrapper-4 .inp-cbx:checked + .cbx span:first-child {
-    background: #07f;
-    border-color: #07f;
-    animation: wave-4 0.4s ease;
-  }
-  .checkbox-wrapper-4 .inp-cbx:checked + .cbx span:first-child svg {
-    stroke-dashoffset: 0;
-  }
-  .checkbox-wrapper-4 .inline-svg {
-    position: absolute;
-    width: 0;
-    height: 0;
-    pointer-events: none;
-    user-select: none;
-  }
-  @media screen and (max-width: 640px) {
-    .checkbox-wrapper-4 .cbx {
-      width: 100%;
-      display: inline-block;
-    }
-  }
-  @-moz-keyframes wave-4 {
-    50% {
-      transform: scale(0.9);
-    }
-  }
-  @-webkit-keyframes wave-4 {
-    50% {
-      transform: scale(0.9);
-    }
-  }
-  @-o-keyframes wave-4 {
-    50% {
-      transform: scale(0.9);
-    }
-  }
-  @keyframes wave-4 {
-    50% {
-      transform: scale(0.9);
-    }
-  }
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.card-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.card-logo {
+    font-size: 24px;
+    margin-right: 10px;
+}
+
+.card-title {
+    font-size: 30px;
+    font-weight: bold;
+    font-family: "Silkscreen", sans-serif;
+}
+
+.card-content6 {
+    display: flex;
+    gap: 20px;
+}
+
+.card-photo {
+    margin-top: 13px;
+    margin-left: 10px;
+    width: 140px;
+    height: 140px;
+    background: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.card-details {
+    flex: 1;
+}
+
+.card-field {
+    margin-left: 20px;
+    margin-bottom: 10px;
+    font-size: 18px;
+    font-family: "Silkscreen", sans-serif;
+}
+
+#page6 label{
+    margin-left: 10px;
+}
+
+#fullName{
+    width: 400px;
+    border-radius: 20px;
+}
+
+#age{
+    width: 220px;
+    border-radius: 20px;
+}
+
+#gender{
+    width: 686px;
+    border-radius: 20px;
+}
+
+#gender option{
+    padding-left: 9px;
+    font-family: "Montserrat", sans-serif;
+    font-size: 15px;
+    color: #000000;
+    font-style: italic;
+}
+
+#gender option:hover{
+    background-color: #4eadad;
+    color: white;
+}
+
+#phone,#email{
+    width: 663px;
+    border-radius: 20px;
+}
+#appointmentDate{
+    width: 663px;
+    border-radius: 20px;
+}
+
 
   #page7 {
     background-image: url('./assets/Dr. Gasal’s website 2.png');
