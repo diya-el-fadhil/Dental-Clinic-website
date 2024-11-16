@@ -26,8 +26,8 @@
                 Book Appointment</button>
         </div>
         <div class="hero">
-            <h1>Dr. Gasal's</h1>
-            <p>Esthetic & Multispeciality Dental Clinic is a dedicated clinic in, Thrissur, that offers high-quality healthcare services to patients of all ages. The clinic's team of professionals is highly skilled and well-versed in their respective domains. </p>
+            <h1 id="heroh">Dr. Gasal's</h1>
+            <p id="herop">Esthetic & Multispeciality Dental Clinic is a dedicated clinic in, Thrissur, that offers high-quality healthcare services to patients of all ages. The clinic's team of professionals is highly skilled and well-versed in their respective domains. </p>
             <a href="#appointment" class="btn-primary">Book Your Appointment</a>
         </div>
     </div>
@@ -215,11 +215,19 @@
                         <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" required>
                     </div>
     
-                    <div class="form-group checkbox-group">
-                        <input type="checkbox" id="existingPatient" name="existingPatient">
-                        <label for="existingPatient">Existing Patient</label>
+                    <div class="checkbox-wrapper-4">
+                        <input class="inp-cbx" id="existingPatient" type="checkbox" name="existingPatient"/>
+                        <label class="cbx" for="existingPatient"><span>
+                        <svg width="12px" height="10px">
+                          <use xlink:href="#check-4"></use>
+                        </svg></span><span>Existing Patient</span></label>
+                        <svg class="inline-svg">
+                          <symbol id="check-4" viewbox="0 0 12 10">
+                            <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
+                          </symbol>
+                        </svg>
+                      </div>
                     </div>
-                </div>
     
                 <!-- Preferred Date and Preferred Time in the same row -->
                 <div class="form-row">
@@ -230,14 +238,14 @@
     
                     <div class="form-group">
                         <label for="time">Preferred Time:</label>
-                        <input type="time" id="time" name="time" required>
+                        <input type="time" class="form-control" id="preferredTime" name="preferredTime" placeholder="Preferred Time">
                     </div>
                 </div>
     
                 <!-- Comments Section -->
                 <div class="form-group">
                     <label for="comments"></label>
-                    <textarea id="comments" name="comments" placeholder="Enter any additional comments"></textarea>
+                    <textarea id="comments" name="comments" placeholder="Comments"></textarea>
                 </div>
     
                 <!-- Submit Button -->
