@@ -518,3 +518,34 @@ inputs.forEach(input => {
 
 // Initial update
 updateCard();
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Register ScrollTrigger plugin
+    gsap.registerPlugin(ScrollTrigger);
+    
+    // Get all items
+    const items = gsap.utils.toArray('#page4 .item');
+    
+    // Set initial state
+    gsap.set(items, {
+        scale: 0.5,
+        opacity: 0
+    });
+    
+    // Create the animation
+    gsap.to(items, {
+        scale: 1,
+        opacity: 1,
+        duration: 0.6,
+        stagger: 0.2,
+        ease: "back.out(1.2)",
+        
+        scrollTrigger: {
+            trigger: "#page4",
+            start: "top 50%",
+            once: true,
+            // markers: true,
+        }
+    });
+});

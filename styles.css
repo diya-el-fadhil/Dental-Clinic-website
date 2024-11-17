@@ -4,6 +4,7 @@ body{
     font-family: "Montserrat", sans-serif;
     background-color: #ffffff;
     overflow-x: hidden;
+    min-width: 94.56vw;
 }
 
 
@@ -504,14 +505,14 @@ button img{
     margin-top: -23px;
     position: relative;
     padding: 40px;
-    width: 100vw;
+    width: 94.56vw;
     max-width: 100%;
 }
 
 #page5 h1{
     position: absolute;
     top: 190px;
-    left: 70px;
+    left: 120px;
     font-size: 50px;
     color: #2a2a2a;
 }
@@ -520,7 +521,7 @@ button img{
     position: relative;
     text-align: right;
     color: white;
-    right: 150px;
+    right: 120px;
     line-height: 34px;
 }
 
@@ -529,7 +530,7 @@ button img{
     text-align: left;
     color: #2a2a2a;
     line-height: 34px;
-    left: 70px;
+    left: 120px;
     font-weight: 600 ;
 }
 
@@ -558,7 +559,7 @@ button img{
 
 #r1{
     position: absolute;
-    width: 900px;
+    width: 850px;
     top: 360px;
 }
 
@@ -778,21 +779,29 @@ select {
     border-radius: 20px;
 }
 
+#DA
+{
+    margin-left: 10px;
+}
+
 
   #page7 {
     background-image: url('./assets/Dr. Gasal’s website 2.png');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    height: 100vh;
+    height: 90vh;
     margin-top: -23px;
     position: relative;
     padding: 40px;
-    width: 100vw;
+    width: 94.56vw;
 }
 
 #page7h{
+    font-size: 40px;
     text-align: right;
     width: 91vw;
-    margin-top: 90px;
+    margin-top: 30px;
+    text-transform: uppercase;
+    color: #4eadad;
 }
