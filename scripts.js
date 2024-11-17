@@ -234,7 +234,6 @@ function initializeAnimations() {
 
 // Start animations when DOM is loaded
 document.addEventListener('DOMContentLoaded', initializeAnimations);
-
 function initializeCarousel() {
     const track = document.querySelector('.carousel-track');
     const items = document.querySelectorAll('.carousel-item');
@@ -246,14 +245,12 @@ function initializeCarousel() {
     
     // Clone items for infinite scroll
     const cloneItems = () => {
-        // Clone beginning items and append to end
         for (let i = 0; i < itemsToShow; i++) {
             const clone = items[i].cloneNode(true);
             clone.classList.add('clone');
             track.appendChild(clone);
         }
         
-        // Clone end items and prepend to beginning
         for (let i = totalItems - itemsToShow; i < totalItems; i++) {
             const clone = items[i].cloneNode(true);
             clone.classList.add('clone');
@@ -313,23 +310,19 @@ function initializeCarousel() {
         prevBtn.disabled = false;
         nextBtn.disabled = false;
         
-        // Adjust the limits to ensure the last item is fully visible
         if (currentIndex <= itemsToShow) {
             prevBtn.disabled = true;
         }
         
-        // Changed this condition to prevent cutting off the last item
         if (currentIndex >= totalItems) {
             nextBtn.disabled = true;
         }
     };
 
-    // Initial button state
     updateButtonStates();
 
     const updateCarousel = (direction) => {
-        const allItems = track.querySelectorAll('.carousel-item');
-        const totalWidth = itemWidth + 160; // Item width plus gap
+        const totalWidth = itemWidth + 160;
         
         if (direction === 'next' && currentIndex < totalItems) {
             currentIndex++;
@@ -349,7 +342,7 @@ function initializeCarousel() {
         });
     };
 
-    // Rest of the carousel code remains the same...
+    // Add hover effects
     const addHoverEffects = () => {
         const allItems = track.querySelectorAll('.carousel-item');
         allItems.forEach(item => {
@@ -384,7 +377,52 @@ function initializeCarousel() {
     addHoverEffects();
 
     let isAnimating = false;
-    
+    let isHovering = false;
+    let lastWheelDelta = 0;
+    let wheelTimeout;
+
+    // Add hover detection
+    track.addEventListener('mouseenter', () => {
+        isHovering = true;
+    });
+
+    track.addEventListener('mouseleave', () => {
+        isHovering = false;
+    });
+
+    // Handle wheel events instead of scroll
+    const handleWheel = (event) => {
+        if (isHovering) {
+            event.preventDefault(); // Prevent default scroll
+            
+            if (!isAnimating) {
+                const wheelDelta = event.deltaY;
+                
+                clearTimeout(wheelTimeout);
+                
+                wheelTimeout = setTimeout(() => {
+                    if (Math.abs(wheelDelta) > 20) { // Minimum wheel threshold
+                        if (wheelDelta > 0 && !nextBtn.disabled) {
+                            isAnimating = true;
+                            updateCarousel('next');
+                            setTimeout(() => isAnimating = false, 600);
+                        } else if (wheelDelta < 0 && !prevBtn.disabled) {
+                            isAnimating = true;
+                            updateCarousel('prev');
+                            setTimeout(() => isAnimating = false, 600);
+                        }
+                    }
+                }, 50); // Debounce wheel events
+                
+                lastWheelDelta = wheelDelta;
+            }
+        }
+    };
+
+    // Add wheel event listener with passive: false to allow preventDefault
+    track.addEventListener('wheel', handleWheel, { passive: false });
+
+    // Button click handlers
     nextBtn.addEventListener('click', () => {
         if (!isAnimating && !nextBtn.disabled) {
             isAnimating = true;
@@ -415,6 +453,32 @@ function initializeCarousel() {
 }
 
 document.addEventListener('DOMContentLoaded', initializeCarousel);
+
+// String Animation
+var initialPath = "M 10 100 Q 500 100 990 100";
+var finalPath = "M 10 100 Q 500 100 990 100";
+var string = document.querySelector("#string");
+
+string.addEventListener("mousemove", function(dets) {
+    const rect = string.getBoundingClientRect();
+    const x = dets.clientX - rect.left;
+    const y = dets.clientY - rect.top;
+    
+    path = `M 10 100 Q ${x} ${y} 990 100`;
+    gsap.to("svg path", {
+        attr: { d: path },
+        duration: 0.3,
+        ease: "power3.out"
+    });
+});
+
+string.addEventListener("mouseleave", function() {
+    gsap.to("svg path", {
+        attr: { d: finalPath },
+        duration: 1.5,
+        ease: "elastic.out(1,0.2)"
+    });
+});
 
 
 // Function to update card details
