@@ -1,3 +1,7 @@
+html {
+    scroll-behavior: smooth;
+}
+
 body{
     margin: 0;
     padding: 0;
@@ -6,6 +10,34 @@ body{
     overflow-x: hidden;
     min-width: 94.56vw;
 }
+
+/* Preloader container */
+#preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #ffffff; /* Adjust as needed */
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 1;
+    transition: opacity 0.5s ease;
+}
+
+#preloader.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* Optional: Style the GIF if needed */
+#preloader img {
+    width: 150px; /* Adjust to your desired size */
+    height: auto;
+}
+
 
 
 /* The entire scrollbar */
@@ -792,7 +824,6 @@ select {
     background-repeat: no-repeat;
     height: 90vh;
     margin-top: -23px;
-    position: relative;
     padding: 40px;
     width: 94.56vw;
 }
@@ -804,4 +835,13 @@ select {
     margin-top: 30px;
     text-transform: uppercase;
     color: #4eadad;
+}
+
+#right7{
+    position: absolute;
+    width: 600px;
+    text-align: right;
+    right: 100px;
+    line-height: 36px;
+
 }

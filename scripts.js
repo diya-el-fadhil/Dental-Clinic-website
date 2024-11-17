@@ -1,3 +1,13 @@
+window.addEventListener('load', function () {
+    const preloader = document.getElementById('preloader');
+    setTimeout(() => {
+        preloader.classList.add('hidden');
+        setTimeout(() => preloader.style.display = 'none', 500); 
+    }, 100);
+});
+
+
+
 // Helper function to split text for animation
 function breakText() {
     let heroH1 = document.querySelector(".hero h1");
@@ -24,6 +34,12 @@ function breakText() {
         <div class="right-container">${newHTML.right}</div>
     `;
 }
+
+function scrollToPage6() {
+    document.getElementById('page6').scrollIntoView({ behavior: 'smooth' });
+}
+
+
 
 // Main animation function
 function initializeAnimations() {
@@ -544,7 +560,6 @@ document.addEventListener('DOMContentLoaded', function() {
         scrollTrigger: {
             trigger: "#page4",
             start: "top 50%",
-            once: true,
             // markers: true,
         }
     });
