@@ -16,25 +16,29 @@
     <title>Gasals</title>
 </head>
 <body>
+    <div id="preloader">
+        <img src="./assets/loader.gif" alt="Loading...">
+    </div>
 
     <div class="page" id="page1">
         <div class="nav">
             <img src="./assets/Logo 1.png" alt="Dr. Gasal's Logo" class="logo">
             <ul>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Services</a></li>
+                <li><a href="#page2">About</a></li>
+                <li><a href="#page4">Services</a></li>
                 <li><a href="#">Testmonial</a></li>
                 <li><a href="#">Media</a></li>
                 <li><a href="#">Contact Us</a></li>
             </ul>
-            <button class="menu-toggle">
+            <button class="menu-toggle" onclick="scrollToPage6()">
                 <img src="./assets/Calender.png" alt="Appointment Icon" class="icon">
-                Book Appointment</button>
+                Book Appointment
+            </button>
         </div>
         <div class="hero">
             <h1 id="heroh">Dr. Gasal's</h1>
             <p id="herop">Esthetic & Multispeciality Dental Clinic is a dedicated clinic in, Thrissur, that offers high-quality healthcare services to patients of all ages. The clinic's team of professionals is highly skilled and well-versed in their respective domains. </p>
-            <a href="#appointment" class="btn-primary">Book Your Appointment</a>
+            <a href="#page6" class="btn-primary">Book Your Appointment</a>
         </div>
     </div>
     <div class="page" id="page2">
@@ -263,6 +267,7 @@
     
     <div class="page" id="page7">
         <h1 id="page7h">Contact us for more INFORMATION</h1>
+        <p id="right7">Lorem ipsum dolor sit amet consectetur adipisicing elit dolores numquam voluptates asperiores voluptate!</p>
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
