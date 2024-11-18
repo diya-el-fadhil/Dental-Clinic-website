@@ -8,6 +8,7 @@ window.addEventListener('load', function () {
 
 
 
+
 // Helper function to split text for animation
 function breakText() {
     let heroH1 = document.querySelector(".hero h1");

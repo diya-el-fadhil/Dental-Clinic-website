@@ -837,11 +837,18 @@ select {
     color: #4eadad;
 }
 
-#right7{
+#right7p{
     position: absolute;
     width: 600px;
     text-align: right;
     right: 100px;
     line-height: 36px;
+    margin-top: -10px;
 
+}
+
+#RU{
+    position: relative;
+    top: 90px;
+    left: 1256px;
 }
