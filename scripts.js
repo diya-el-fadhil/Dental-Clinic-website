@@ -1,31 +1,34 @@
+// Preloader handler
 window.addEventListener('load', function () {
     const preloader = document.getElementById('preloader');
-    setTimeout(() => {
-        preloader.classList.add('hidden');
-        setTimeout(() => preloader.style.display = 'none', 500); 
-    }, 100);
+    if (preloader) {
+        setTimeout(() => {
+            preloader.classList.add('hidden');
+            setTimeout(() => preloader.style.display = 'none', 500); 
+        }, 100);
+    }
 });
 
 // Helper function to split text for animation
 function breakText() {
-    let heroH1 = document.querySelector(".hero h1");
-    if (!heroH1) return;
+    const heroH1 = document.querySelector(".hero h1");
+    if (!heroH1) {
+        console.warn("Hero h1 element not found");
+        return;
+    }
     
-    let text = heroH1.textContent;
-    let splitText = text.split("");
-    let halfPoint = Math.floor(splitText.length / 2);
-    let newHTML = {
-        left: "",
-        right: ""
+    const text = heroH1.textContent.trim();
+    const splitText = text.split("");
+    const halfPoint = Math.ceil(splitText.length / 2); // Changed to ceil for better text splitting
+    
+    const newHTML = {
+        left: splitText.slice(0, halfPoint).map(char => 
+            `<span>${char === " " ? "&nbsp;" : char}</span>`
+        ).join(""),
+        right: splitText.slice(halfPoint).map(char => 
+            `<span>${char === " " ? "&nbsp;" : char}</span>`
+        ).join("")
     };
-    
-    splitText.forEach((char, index) => {
-        if (index < halfPoint) {
-            newHTML.left += `<span>${char}</span>`;
-        } else {
-            newHTML.right += `<span>${char}</span>`;
-        }
-    });
     
     heroH1.innerHTML = `
         <div class="left-container">${newHTML.left}</div>
@@ -33,29 +36,34 @@ function breakText() {
     `;
 }
 
-function scrollToPage6() {
-    document.getElementById('page6').scrollIntoView({ behavior: 'smooth' });
-}
-
-
-
 // Main animation function
 function initializeAnimations() {
-    // Add necessary styles
-    const style = document.createElement('style');
-    style.textContent = `
+    // Check for GSAP and required plugins
+    if (typeof gsap === 'undefined') {
+        console.error('GSAP library not found. Please include GSAP in your project.');
+        return;
+    }
+
+    // Add required styles
+    const styleContent = `
         .hero h1 {
             display: flex;
             justify-content: center;
             align-items: center;
             gap: 0.5rem;
+            overflow: hidden;
+            opacity: 1 !important; /* Prevent FOUC */
         }
         .hero h1 .left-container,
         .hero h1 .right-container {
             display: inline-flex;
+            overflow: hidden;
         }
         .hero h1 span {
             display: inline-block;
+            white-space: pre;
+            transform: translateY(100%);
+            opacity: 0;
         }
         .hero h1 .left-container {
             transform-origin: right center;
@@ -66,187 +74,162 @@ function initializeAnimations() {
             text-align: left;
         }
     `;
-    document.head.appendChild(style);
+
+    // Create and append style element if it doesn't exist
+    if (!document.querySelector('#animation-styles')) {
+        const style = document.createElement('style');
+        style.id = 'animation-styles';
+        style.textContent = styleContent;
+        document.head.appendChild(style);
+    }
 
     // Landing page animations
     function createLandingAnimations() {
+        // Break text before creating timeline
         breakText();
         
-        let tl = gsap.timeline();
+        // Kill any existing tweens
+        gsap.killTweensOf([
+            ".hero h1 .left-container span",
+            ".hero h1 .right-container span",
+            ".hero p",
+            ".hero a",
+            ".nav img.logo",
+            ".nav ul",
+            ".nav button"
+        ]);
         
+        const tl = gsap.timeline({
+            defaults: { ease: "power3.out" },
+            onStart: () => console.log('Landing animation started'),
+            onComplete: () => console.log('Landing animation completed')
+        });
+
         // Set initial states
         gsap.set([".hero h1 .left-container span", ".hero h1 .right-container span"], {
             y: 100,
             opacity: 0
         });
+        
         gsap.set([".hero p", ".hero a", ".nav img.logo", ".nav ul", ".nav button"], {
             y: 30,
             opacity: 0
         });
-        
-        // Animation sequence
+
+        // Build animation sequence
         tl.to(".nav img.logo", {
             y: 0,
             opacity: 1,
-            duration: 1,
-            ease: "power3.out"
+            duration: 0.8
         })
         .to(".nav ul", {
             y: 0,
             opacity: 1,
-            duration: 1,
-            ease: "power3.out"
-        }, "-=0.8")
+            duration: 0.8,
+            stagger: 0.1
+        }, "-=0.6")
         .to(".nav button", {
             y: 0,
             opacity: 1,
-            duration: 1,
-            ease: "power3.out"
-        }, "-=0.8")
+            duration: 0.8
+        }, "-=0.6")
         .to(".hero h1 .left-container span", {
             y: 0,
             opacity: 1,
-            duration: 1,
-            stagger: 0.05,
-            ease: "power3.out"
-        }, "-=0.5")
+            duration: 0.8,
+            stagger: 0.03
+        }, "-=0.4")
         .to(".hero h1 .right-container span", {
             y: 0,
             opacity: 1,
-            duration: 1,
-            stagger: -0.05,
-            ease: "power3.out"
-        }, "<")  // Start at the same time as left container
+            duration: 0.8,
+            stagger: 0.03
+        }, "<")
         .to(".hero p", {
             y: 0,
             opacity: 1,
-            duration: 1,
-            ease: "power2.out"
-        }, "-=0.5")
+            duration: 0.8
+        }, "-=0.4")
         .to(".hero a", {
             y: 0,
             opacity: 1,
-            duration: 0.8,
-            ease: "elastic.out(1, 0.8)"
-        }, "-=0.7");
+            duration: 0.6,
+            ease: "elastic.out(1, 0.75)"
+        }, "-=0.6");
 
-        // Add hover effect to nav items
-        const navItems = document.querySelectorAll('.nav ul li a');
-        navItems.forEach(item => {
-            item.addEventListener('mouseenter', () => {
-                gsap.to(item, {
-                    y: -2,
-                    duration: 0.3,
-                    ease: "power2.out"
-                });
-            });
-            
-            item.addEventListener('mouseleave', () => {
-                gsap.to(item, {
-                    y: 0,
-                    duration: 0.3,
-                    ease: "power2.out"
-                });
-            });
-        });
-
-        // Add hover effect to button
-        const button = document.querySelector('.nav button');
-        button.addEventListener('mouseenter', () => {
-            gsap.to(button, {
-                scale: 1.05,
-                duration: 0.3,
-                ease: "power2.out"
-            });
-        });
-        
-        button.addEventListener('mouseleave', () => {
-            gsap.to(button, {
-                scale: 1,
-                duration: 0.3,
-                ease: "power2.out"
-            });
-        });
+        return tl;
     }
 
-    // About page animations
+    // About page animations with ScrollTrigger
     function createAboutAnimations() {
-        gsap.registerPlugin(ScrollTrigger);
+        if (!gsap.plugins.ScrollTrigger) {
+            console.error('ScrollTrigger plugin not found. Please include it in your project.');
+            return;
+        }
+
+        const elements = [".left-contain", ".top-image-container", ".bottom-left", ".bottom-right"];
         
         // Set initial states
-        gsap.set([".left-contain", ".top-image-container", ".bottom-left", ".bottom-right"], {
+        gsap.set(elements, {
             opacity: 0,
             y: 50
         });
 
-        // Create scroll-triggered timeline
-        let tl = gsap.timeline({
-            scrollTrigger: {
-                trigger: "#page2",
-                start: "top center",
-                end: "+=300",
-                toggleActions: "play none none reverse"
-            }
+        elements.forEach(element => {
+            gsap.to(element, {
+                scrollTrigger: {
+                    trigger: element,
+                    start: "top bottom-=100",
+                    end: "top center",
+                    toggleActions: "play none none reverse",
+                    markers: false // Set to true for debugging
+                },
+                opacity: 1,
+                y: 0,
+                duration: 1,
+                ease: "power2.out"
+            });
         });
 
-        tl.to(".left-contain", {
-            opacity: 1,
-            y: 0,
-            duration: 1,
-            ease: "power2.out"
-        })
-        .to(".top-image-container", {
-            opacity: 1,
-            y: 0,
-            duration: 1,
-            ease: "power2.out"
-        }, "-=0.7")
-        .to([".bottom-left", ".bottom-right"], {
-            opacity: 1,
-            y: 0,
-            duration: 0.8,
-            stagger: 0.2,
-            ease: "power2.out"
-        }, "-=0.5");
+        // Add hover effects
+        elements.forEach(selector => {
+            const element = document.querySelector(selector);
+            if (!element) return;
 
-        // Enhanced hover animations
-        const hoverElements = document.querySelectorAll('.top-image-container, .bottom-left, .bottom-right');
-        
-        hoverElements.forEach(element => {
             const img = element.querySelector('img');
-            
+            if (!img) return;
+
             element.addEventListener('mouseenter', () => {
                 gsap.to(img, {
-                    scale: 1.03,
-                    duration: 0.4,
+                    scale: 1.05,
+                    duration: 0.3,
                     ease: "power2.out"
                 });
-                gsap.to(element, {
-                    boxShadow: "0 10px 20px rgba(0,0,0,0.15)",
-                    duration: 0.4
-                });
             });
-            
+
             element.addEventListener('mouseleave', () => {
                 gsap.to(img, {
                     scale: 1,
-                    duration: 0.4,
+                    duration: 0.3,
                     ease: "power2.inOut"
-                });
-                gsap.to(element, {
-                    boxShadow: "0 4px 6px -1px rgba(0,0,0,0.1)",
-                    duration: 0.4
                 });
             });
         });
     }
 
-    // Initialize all animations
-    createLandingAnimations();
-    createAboutAnimations();
+    // Initialize animations
+    window.addEventListener('load', () => {
+        createLandingAnimations();
+        createAboutAnimations();
+    });
 }
 
-
+// Initialize when DOM is ready
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initializeAnimations);
+} else {
+    initializeAnimations();
+}
 
 
 

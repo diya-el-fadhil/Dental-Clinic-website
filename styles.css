@@ -21,7 +21,7 @@ body{
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: #ffffff; /* Adjust as needed */
+    background-color: #ffffff; 
     z-index: 9999;
     display: flex;
     align-items: center;
@@ -35,9 +35,8 @@ body{
     pointer-events: none;
 }
 
-/* Optional: Style the GIF if needed */
 #preloader img {
-    width: 150px; /* Adjust to your desired size */
+    width: 150px;
     height: auto;
 }
 
