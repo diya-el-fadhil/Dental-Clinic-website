@@ -1,5 +1,7 @@
+/* Base Responsive Styles */
 html {
     scroll-behavior: smooth;
+    font-size: 16px; /* Base font size for responsive typography */
 }
 
 body{
@@ -9,6 +11,7 @@ body{
     background-color: #ffffff;
     overflow-x: hidden;
     min-width: 94.56vw;
+    user-select: none;
 }
 
 /* Preloader container */
@@ -37,7 +40,6 @@ body{
     width: 150px; /* Adjust to your desired size */
     height: auto;
 }
-
 
 
 /* The entire scrollbar */
@@ -114,6 +116,7 @@ body{
     background-image: url('https://images.unsplash.com/photo-1670250721717-889b17349fc4?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
     background-size: cover;
     background-position: center;    
+    
 }
 #page1::before {
     content: '';
@@ -365,11 +368,12 @@ button img{
     display: flex;
     gap: 2.5rem; /* Increased gap between items */
     transition: transform 0.6s cubic-bezier(0.25, 0.1, 0.25, 1);
-    width: fit-content;
-    margin: 0 auto;
+    margin: 0 10px;
     padding: 20px;
-    clip-path: inset(0 8% 0 8%); /* Adjusted clip path for new layout */
-    -webkit-clip-path: inset(0 8% 0 8%);
+    padding-left: 40px;
+    padding-right: 40px;
+    clip-path: inset(0 2% 0 2%);
+    -webkit-clip-path: inset(0 2% 0 2%);
     position: relative;
     z-index: 1;
 }
@@ -429,6 +433,7 @@ button img{
     height: 100%;
     object-fit: cover;
     transition: transform 0.5s ease;
+    will-change: opacity, transform;
 }
 
 .carousel-text {
@@ -851,4 +856,82 @@ select {
     position: relative;
     top: 90px;
     left: 1256px;
+}
+
+.Head7{
+    color: #ffffff;
+    font-weight: 600;
+    font-size: 20px;
+    width: 200px;
+}
+
+.Par7{
+    color: #ffffff;
+    line-height: 1.6rem;
+    font-style: italic;
+    width: 200px;
+    letter-spacing: 1.5px;
+    font-size: 14px;
+}
+
+#Location7{
+    position: relative;
+    top: 110px;
+    left: 20px;
+}
+
+#LP7{
+    position: relative;
+    top: 110px;
+    left: 20px;
+}
+
+#Contact7{
+    position: relative;
+    top: -235px;
+    left: 240px;
+}
+
+#CP7{
+    position: relative;
+    top: -235px;
+    left: 240px;
+}
+
+#WH7{
+    position: relative;
+    top: -555px;
+    left: 480px;
+}
+
+#WHP7{
+    position: relative;
+    top: -555px;
+    left: 480px;
+}
+
+.CYP{
+    position: relative;
+    top: -160px;
+    left: 20px;
+    color: #f1f1f1;
+    font-size: 10px;
+    letter-spacing: 1px;
+    width: 500px;
+}
+
+.SM7{
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    top: -220px;
+    left: 1100px;
+    width: 300px;
+    gap: 2.8rem;
+}
+
+.SM7 img{
+    width: 40px;
+    height: 40px;
+    fill: #f1f1f1;
 }

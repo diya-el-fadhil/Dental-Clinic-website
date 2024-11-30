@@ -6,9 +6,6 @@ window.addEventListener('load', function () {
     }, 100);
 });
 
-
-
-
 // Helper function to split text for animation
 function breakText() {
     let heroH1 = document.querySelector(".hero h1");
@@ -249,8 +246,15 @@ function initializeAnimations() {
     createAboutAnimations();
 }
 
+
+
+
+
+
+
 // Start animations when DOM is loaded
-document.addEventListener('DOMContentLoaded', initializeAnimations);
+document.addEventListener('DOMContentLoaded', initializeCarousel);
+
 function initializeCarousel() {
     const track = document.querySelector('.carousel-track');
     const items = document.querySelectorAll('.carousel-item');
@@ -260,36 +264,20 @@ function initializeCarousel() {
     const itemsToShow = 3;
     const totalItems = items.length;
     
-    // Clone items for infinite scroll
-    const cloneItems = () => {
-        for (let i = 0; i < itemsToShow; i++) {
-            const clone = items[i].cloneNode(true);
-            clone.classList.add('clone');
-            track.appendChild(clone);
-        }
-        
-        for (let i = totalItems - itemsToShow; i < totalItems; i++) {
-            const clone = items[i].cloneNode(true);
-            clone.classList.add('clone');
-            track.prepend(clone);
-        }
-    };
-
     // Set up initial styles
     const setupStyles = () => {
-        const containerWidth = track.parentElement.offsetWidth * 0.8;
+        const containerWidth = track.parentElement.offsetWidth * 0.7;
         const itemWidth = (containerWidth - (itemsToShow - 1) * 24) / itemsToShow;
 
         track.style.cssText = `
             display: flex;
-            gap: 1.5rem;
+            gap: 1.9rem;
             transition: transform 0.6s cubic-bezier(0.25, 0.1, 0.25, 1);
             width: fit-content;
             margin: 0 auto;
         `;
 
-        const allItems = track.querySelectorAll('.carousel-item');
-        allItems.forEach(item => {
+        items.forEach(item => {
             item.style.cssText = `
                 min-width: ${itemWidth}px;
                 height: 400px;
@@ -315,43 +303,34 @@ function initializeCarousel() {
         return itemWidth;
     };
 
-    cloneItems();
     const itemWidth = setupStyles();
     
-    let currentIndex = itemsToShow;
-    let currentTranslate = -(currentIndex * (itemWidth + 24));
+    let currentIndex = 0;
+    let currentTranslate = 0;
     track.style.transform = `translateX(${currentTranslate}px)`;
 
     // Update button states
     const updateButtonStates = () => {
-        prevBtn.disabled = false;
-        nextBtn.disabled = false;
-        
-        if (currentIndex <= itemsToShow) {
-            prevBtn.disabled = true;
-        }
-        
-        if (currentIndex >= totalItems) {
-            nextBtn.disabled = true;
-        }
+        prevBtn.disabled = currentIndex === 0;
+        nextBtn.disabled = currentIndex >= totalItems - itemsToShow;
     };
 
     updateButtonStates();
 
     const updateCarousel = (direction) => {
-        const totalWidth = itemWidth + 160;
+        const totalWidth = itemWidth + 24;
         
-        if (direction === 'next' && currentIndex < totalItems) {
+        if (direction === 'next' && currentIndex < totalItems - itemsToShow) {
             currentIndex++;
-            currentTranslate -= totalWidth;
-        } else if (direction === 'prev' && currentIndex > itemsToShow) {
+            currentTranslate -= totalWidth * 0.5; // Move by half an item
+        } else if (direction === 'prev' && currentIndex > 0) {
             currentIndex--;
-            currentTranslate += totalWidth;
+            currentTranslate += totalWidth * 0.5; // Move by half an item
         }
 
         gsap.to(track, {
             x: currentTranslate,
-            duration: 0.6,
+            duration: 0.001,
             ease: "power2.out",
             onComplete: () => {
                 updateButtonStates();
@@ -361,41 +340,55 @@ function initializeCarousel() {
 
     // Add hover effects
     const addHoverEffects = () => {
-        const allItems = track.querySelectorAll('.carousel-item');
-        allItems.forEach(item => {
+        const items = document.querySelectorAll('.carousel-item');
+    
+        items.forEach(item => {
+            const img = item.querySelector('img');
+            const originalSrc = img.getAttribute('src');
+            const hoverSrc = img.getAttribute('data-hover-src'); // New hover image source
+    
             item.addEventListener('mouseenter', () => {
+                if (hoverSrc) img.setAttribute('src', hoverSrc);
                 gsap.to(item, {
                     y: -10,
                     scale: 1.02,
+                    opacity: 1, // Reduce opacity on hover
+                    x: 5, // Slight translation on the X-axis (can adjust to your preference)
                     boxShadow: '0 10px 20px rgba(0,0,0,0.2)',
                     duration: 0.3
                 });
-                gsap.to(item.querySelector('img'), {
+                gsap.to(img, {
                     scale: 1.1,
+                    opacity: 0.9, // Reduce opacity of image on hover
                     duration: 0.3
                 });
             });
-
+    
             item.addEventListener('mouseleave', () => {
+                if (hoverSrc) img.setAttribute('src', originalSrc);
                 gsap.to(item, {
                     y: 0,
                     scale: 1,
+                    opacity: 1, // Restore full opacity
+                    x: 0, // Reset translation
                     boxShadow: '0 4px 20px rgba(0,0,0,0.1)',
                     duration: 0.3
                 });
-                gsap.to(item.querySelector('img'), {
+                gsap.to(img, {
                     scale: 1,
+                    opacity: 1, // Restore full opacity
                     duration: 0.3
                 });
             });
         });
     };
-
+    
     addHoverEffects();
+    
+    
 
     let isAnimating = false;
     let isHovering = false;
-    let lastWheelDelta = 0;
     let wheelTimeout;
 
     // Add hover detection
@@ -410,7 +403,7 @@ function initializeCarousel() {
     // Handle wheel events instead of scroll
     const handleWheel = (event) => {
         if (isHovering) {
-            event.preventDefault(); // Prevent default scroll
+            event.preventDefault();
             
             if (!isAnimating) {
                 const wheelDelta = event.deltaY;
@@ -418,21 +411,26 @@ function initializeCarousel() {
                 clearTimeout(wheelTimeout);
                 
                 wheelTimeout = setTimeout(() => {
-                    if (Math.abs(wheelDelta) > 20) { // Minimum wheel threshold
-                        if (wheelDelta > 0 && !nextBtn.disabled) {
+                    if (Math.abs(wheelDelta) > 10) { // Minimum wheel threshold
+                        if (wheelDelta > 0 && currentIndex < totalItems - itemsToShow) {
                             isAnimating = true;
                             updateCarousel('next');
-                            setTimeout(() => isAnimating = false, 600);
-                        } else if (wheelDelta < 0 && !prevBtn.disabled) {
+                            setTimeout(() => isAnimating = false, 300);
+                        } else if (wheelDelta < 0 && currentIndex > 0) {
                             isAnimating = true;
                             updateCarousel('prev');
-                            setTimeout(() => isAnimating = false, 600);
+                            setTimeout(() => isAnimating = false, 300);
                         }
                     }
-                }, 50); // Debounce wheel events
-                
-                lastWheelDelta = wheelDelta;
+                }, 20); // Debounce wheel events
             }
+        }
+        // Prevent scrolling when at the first or last item
+        if (
+            (currentIndex === 0 && event.deltaY < 0) ||
+            (currentIndex >= totalItems - itemsToShow && event.deltaY > 0)
+        ) {
+            event.preventDefault();
         }
     };
 
@@ -441,7 +439,7 @@ function initializeCarousel() {
 
     // Button click handlers
     nextBtn.addEventListener('click', () => {
-        if (!isAnimating && !nextBtn.disabled) {
+        if (!isAnimating && currentIndex < totalItems - itemsToShow) {
             isAnimating = true;
             updateCarousel('next');
             setTimeout(() => isAnimating = false, 600);
@@ -449,7 +447,7 @@ function initializeCarousel() {
     });
 
     prevBtn.addEventListener('click', () => {
-        if (!isAnimating && !prevBtn.disabled) {
+        if (!isAnimating && currentIndex > 0) {
             isAnimating = true;
             updateCarousel('prev');
             setTimeout(() => isAnimating = false, 600);
@@ -470,6 +468,11 @@ function initializeCarousel() {
 }
 
 document.addEventListener('DOMContentLoaded', initializeCarousel);
+
+
+
+
+
 
 // String Animation
 var initialPath = "M 10 100 Q 500 100 990 100";
