@@ -940,6 +940,26 @@ select {
     fill: #f1f1f1;
 }
 
+.hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 21px;
+    cursor: pointer;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+}
+
+.hamburger span {
+    display: block;
+    width: 100%;
+    height: 3px;
+    background-color: white;
+    transition: all 0.3s ease-in-out;
+}
 
 
 /* Responsive typography base */
@@ -979,32 +999,71 @@ select {
     }
 
     .nav {
-        font-size: 1rem;
+        padding: 15px;
+        position: fixed;
         width: 100%;
-        box-sizing: border-box;
+        background-color: #33333300;
+        z-index: 999;
+    }
+    
+    .nav img.logo {
+        height: 50px;
+        margin-top: 20px;
+        margin-left: 7px;
+        position: fixed;
+        top: 10px;
+        left: 20px;
     }
 
-    .nav ul {
-        gap: 20px;
+    .hamburger {
+        display: flex;
+        margin-top: 20px;
+        margin-right: 10px;
     }
 
-    /* Hide regular nav */
     .nav ul {
         display: none;
-    }
-
-    /* Keep logo visible and centered */
-    .nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background-color: rgba(0, 0, 0, 0.9);
+        flex-direction: column;
         justify-content: center;
-    }
-
-    .nav img.logo {
+        align-items: center;
         margin: 0;
-        height: 200px; /* Back to original size */
-        width: auto;
+        padding: 0;
+        z-index: 998;
     }
 
-    .menu-toggle{
+    .nav ul.active {
+        display: flex;
+    }
+
+    .nav ul li {
+        margin: 20px 0;
+    }
+
+    .nav ul li a {
+        font-size: 1.5rem;
+        color: white;
+    }
+
+    /* Hamburger animation */
+    .hamburger.active span:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 5px);
+    }
+
+    .hamburger.active span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .hamburger.active span:nth-child(3) {
+        transform: rotate(-45deg) translate(7px, -7px);
+    }
+
+    .menu-toggle {
         display: none;
     }
 
@@ -1013,7 +1072,7 @@ select {
     }
 
     .hero{
-        margin-top: -140px;
+        margin-top: 90px;
     }
 
     #heroh {
