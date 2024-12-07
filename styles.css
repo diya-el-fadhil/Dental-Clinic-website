@@ -1,7 +1,6 @@
 /* Base Responsive Styles */
 html {
     scroll-behavior: smooth;
-    font-size: 16px; /* Base font size for responsive typography */
 }
 
 body{
@@ -472,6 +471,8 @@ button img{
 
 /* Page 4 Styles */
 #page4 {
+    display: flex;
+    flex-direction: column;
     width: 100vw;
     max-width: 100%;
     padding: 20px ;
@@ -480,6 +481,7 @@ button img{
     text-align: center;
     color: #fff;
     margin-bottom: 0;
+    align-items: center;
 }
 
 #page4 h1 {
@@ -490,19 +492,20 @@ button img{
 
 /* Flex container for items */
 .item-container {
+    align-self: center;
     margin-top: 60px;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     gap: 15px; /* Reduced gap between items */
-    max-width: 100%;
+    max-width: 95%;
     box-sizing: border-box;
 }
 
 /* Individual item styling */
 .item {
-    width: 240px; /* Fixed width */
-    height: 250px; /* Fixed height */
+    width: 220px; /* Fixed width */
+    height: 230px; /* Fixed height */
     background-color: #fff;
     padding: 10px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -524,7 +527,8 @@ button img{
 }
 
 .item p {
-    margin: 10px 0 0;
+    margin: 8px 0 0;
+    margin-top: -1px;
     font-size: 20px;
     color: #2a2a2a;
     font-weight: 600;
@@ -661,6 +665,7 @@ button img{
     background-color: #f8f8f8;
     border-color: #989898;
     margin-left: 40px;
+    max-height: 605px;
 }
 
 .preview-section6 {
@@ -854,7 +859,7 @@ select {
 #RU{
     position: relative;
     top: 90px;
-    left: 1256px;
+    left: 1186px;
 }
 
 .Head7{
@@ -911,7 +916,7 @@ select {
 
 .CYP{
     position: relative;
-    top: -160px;
+    top: -200px;
     left: 20px;
     color: #f1f1f1;
     font-size: 10px;
@@ -923,8 +928,8 @@ select {
     display: flex;
     flex-direction: row;
     position: relative;
-    top: -220px;
-    left: 1100px;
+    top: -240px;
+    left: 1000px;
     width: 300px;
     gap: 2.8rem;
 }
@@ -933,4 +938,169 @@ select {
     width: 40px;
     height: 40px;
     fill: #f1f1f1;
+}
+
+/* Responsive typography base */
+
+/* Mobile devices */
+@media screen and (max-width: 480px) {
+    body {
+        min-width: 100vw;
+    }
+
+    .nav {
+        padding: 20px;
+        font-size: 1rem;
+    }
+
+    .nav ul {
+        gap: 20px;
+    }
+
+    .nav img.logo {
+        height: 60px;
+    }
+
+    #heroh {
+        font-size: 3rem;
+    }
+
+    #herop {
+        width: 90%;
+        font-size: 1rem;
+        line-height: 1.8;
+    }
+
+    #page2 {
+        grid-template-columns: 1fr;
+        height: auto;
+        padding: 1rem;
+    }
+
+    .info-box {
+        flex-direction: column;
+        height: auto;
+        padding: 20px;
+        gap: 20px;
+    }
+
+    .info-item {
+        width: 100%;
+    }
+
+    .divider {
+        width: 100%;
+        height: 1px;
+    }
+
+    .carousel-item {
+        width: 220px;
+        height: 300px;
+    }
+
+    .item-container {
+        gap: 10px;
+    }
+
+    .item {
+        width: 160px;
+        height: 180px;
+    }
+
+    .item img {
+        height: 100px;
+    }
+
+    .item p {
+        font-size: 16px;
+    }
+
+    #page5 {
+        height: auto;
+        padding: 20px;
+    }
+
+    #page5 h1 {
+        position: relative;
+        top: 0;
+        left: 0;
+        font-size: 30px;
+        text-align: center;
+    }
+
+    .lefty, .righty {
+        position: relative;
+        text-align: center;
+        right: 0;
+        left: 0;
+    }
+
+    #page6 {
+        flex-direction: column;
+    }
+
+    .form-section6 {
+        margin: 0;
+        max-height: none;
+    }
+
+    .form-row6 {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    #fullName, #age, #gender, #phone, #email, #appointmentDate {
+        width: 90%;
+    }
+
+    .appointment-card {
+        width: 90%;
+        margin-top: 20px;
+    }
+
+    .card-content6 {
+        flex-direction: column;
+    }
+
+    #page7 {
+        height: auto;
+    }
+
+    #page7h {
+        width: 100%;
+        font-size: 30px;
+    }
+
+    #right7p {
+        width: 90%;
+        right: auto;
+        position: relative;
+        text-align: center;
+    }
+
+    .SM7 {
+        left: 50%;
+        transform: translateX(-50%);
+        gap: 1.5rem;
+    }
+}
+
+/* iPads, Tablets */
+@media screen and (min-width: 481px) and (max-width: 768px) {
+    /* Tablet styles */
+}
+
+/* Small screens, laptops */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+    /* Small screen styles */
+}
+
+/* Desktops, large screens */
+@media screen and (min-width: 1025px) and (max-width: 1200px) {
+    /* Desktop styles */
+}
+
+/* Extra large screens, TV */
+@media screen and (min-width: 1201px) {
+    /* Extra large screen styles */
 }
