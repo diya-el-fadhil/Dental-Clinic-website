@@ -944,7 +944,31 @@ select {
 
 /* Mobile devices */
 @media screen and (max-width: 480px) {
+
+        /* Hide regular nav */
+        .nav ul {
+            display: none;
+        }
     
+        /* Keep logo visible and centered */
+        .nav {
+            justify-content: center;
+        }
+    
+        .nav img.logo {
+            margin: 0;
+            height: 60px; /* Back to original size */
+            width: auto;
+        }
+
+        .menu-toggle{
+            display: none;
+        }
+
+        .logo{
+            width: 10px;
+        }
+
     /* Base width control */
     html, body {
         max-width: 100%;
@@ -968,15 +992,12 @@ select {
     #page1, #page2, #page3, #page4, #page5, #page6, #page7 {
         width: 100% !important;
         max-width: 100%;
-        padding: 0;
+        padding: 20px;
         box-sizing: border-box;
     }
 
-    #page1{
-        height: 94vh;
-    }
-
     .nav {
+        padding: 20px;
         font-size: 1rem;
         width: 100%;
         box-sizing: border-box;
@@ -986,32 +1007,8 @@ select {
         gap: 20px;
     }
 
-    /* Hide regular nav */
-    .nav ul {
-        display: none;
-    }
-
-    /* Keep logo visible and centered */
-    .nav {
-        justify-content: center;
-    }
-
     .nav img.logo {
-        margin: 0;
-        height: 200px; /* Back to original size */
-        width: auto;
-    }
-
-    .menu-toggle{
-        display: none;
-    }
-
-    .logo{
-        width: 10px;
-    }
-
-    .hero{
-        margin-top: -140px;
+        height: 60px;
     }
 
     #heroh {
@@ -1024,92 +1021,33 @@ select {
         line-height: 1.8;
     }
 
-    /* ------------------- */
-
     #page2 {
         grid-template-columns: 1fr;
         height: auto;
         padding: 1rem;
     }
 
-    .left-contain{
-        text-align: center;
-        height: auto;
-    }
-    
-
-    .left-contain p{
-        padding: 20px;
-        font-size: 13px;
-    }
-
-    .left-contain h2{
-        font-size: 28px;
-        padding: 40px;
-        padding-bottom: 0;
-    }
-
-    .right-section{
-        display: none;
-    }
-    
-    /* ------------------- */
-
     .info-box {
-        display: none;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 15px;
+        flex-direction: column;
         height: auto;
-        margin: 15px auto;
-        padding: 15px;
-        justify-content: center;
-        align-items: center;
-        justify-items: center; /* Centers items horizontally within grid cells */
-        align-content: center; /* Centers the entire grid vertically */
+        padding: 20px;
+        gap: 20px;
+        width: 90%;
+        margin: 30px auto;
     }
 
     .info-item {
         width: 100%;
-        max-width: 150px; /* Limit maximum width for better control */
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        padding: 10px;
-        box-sizing: border-box;
-        text-align: center;
     }
 
-    .info-item img {
-        width: 35px;
-        height: 35px;
-        margin-bottom: 5px;
-    }
-
-    .info-item-content {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        width: 100%;
-    }
-
-    .info-item-content h3 {
-        font-size: 12px;
-        margin: 0 0 2px 0;
-        text-align: center;
-        width: 100%;
-    }
-
-    .info-item-content p {
-        font-size: 10px;
-        margin-top: -2px;
-        text-align: center;
-        width: 100%;
-    }
-
-    /* Hide dividers as they're not needed in grid layout */
     .divider {
-        display: none;
+        width: 100%;
+        height: 1px;
+    }
+
+    .carousel-item {
+        width: 220px;
+        height: 300px;
     }
 
     .item-container {

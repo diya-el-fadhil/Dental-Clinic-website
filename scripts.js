@@ -244,8 +244,9 @@ function initializeCarousel() {
     const prevBtn = document.querySelector('.prev-btn');
     const nextBtn = document.querySelector('.next-btn');
     
-    const itemsToShow = 3;
+    const itemsToShow = 4; // Changed to show 4 cards
     const totalItems = items.length;
+    const gap = 24; // Changed gap between cards
     
     // Set up initial styles
     const setupStyles = () => {
@@ -305,15 +306,15 @@ function initializeCarousel() {
         
         if (direction === 'next' && currentIndex < totalItems - itemsToShow) {
             currentIndex++;
-            currentTranslate -= totalWidth * 0.5; // Move by half an item
+            currentTranslate -= totalWidth + gap * 3; // Move by full card width
         } else if (direction === 'prev' && currentIndex > 0) {
             currentIndex--;
-            currentTranslate += totalWidth * 0.5; // Move by half an item
+            currentTranslate += totalWidth + gap * 3; // Move by full card width
         }
 
         gsap.to(track, {
             x: currentTranslate,
-            duration: 0.001,
+            duration: 0.6,
             ease: "power2.out",
             onComplete: () => {
                 updateButtonStates();
@@ -321,28 +322,28 @@ function initializeCarousel() {
         });
     };
 
-    // Add hover effects
+    // Add hover effects (previous hover effects remain the same)
     const addHoverEffects = () => {
         const items = document.querySelectorAll('.carousel-item');
     
         items.forEach(item => {
             const img = item.querySelector('img');
             const originalSrc = img.getAttribute('src');
-            const hoverSrc = img.getAttribute('data-hover-src'); // New hover image source
+            const hoverSrc = img.getAttribute('data-hover-src');
     
             item.addEventListener('mouseenter', () => {
                 if (hoverSrc) img.setAttribute('src', hoverSrc);
                 gsap.to(item, {
                     y: -10,
                     scale: 1.02,
-                    opacity: 1, // Reduce opacity on hover
-                    x: 5, // Slight translation on the X-axis (can adjust to your preference)
+                    opacity: 1,
+                    x: 5,
                     boxShadow: '0 10px 20px rgba(0,0,0,0.2)',
                     duration: 0.3
                 });
                 gsap.to(img, {
                     scale: 1.1,
-                    opacity: 0.9, // Reduce opacity of image on hover
+                    opacity: 0.9,
                     duration: 0.3
                 });
             });
@@ -352,14 +353,14 @@ function initializeCarousel() {
                 gsap.to(item, {
                     y: 0,
                     scale: 1,
-                    opacity: 1, // Restore full opacity
-                    x: 0, // Reset translation
+                    opacity: 1,
+                    x: 0,
                     boxShadow: '0 4px 20px rgba(0,0,0,0.1)',
                     duration: 0.3
                 });
                 gsap.to(img, {
                     scale: 1,
-                    opacity: 1, // Restore full opacity
+                    opacity: 1,
                     duration: 0.3
                 });
             });
@@ -367,8 +368,6 @@ function initializeCarousel() {
     };
     
     addHoverEffects();
-    
-    
 
     let isAnimating = false;
     let isHovering = false;
@@ -398,11 +397,11 @@ function initializeCarousel() {
                         if (wheelDelta > 0 && currentIndex < totalItems - itemsToShow) {
                             isAnimating = true;
                             updateCarousel('next');
-                            setTimeout(() => isAnimating = false, 300);
+                            setTimeout(() => isAnimating = false, 600);
                         } else if (wheelDelta < 0 && currentIndex > 0) {
                             isAnimating = true;
                             updateCarousel('prev');
-                            setTimeout(() => isAnimating = false, 300);
+                            setTimeout(() => isAnimating = false, 600);
                         }
                     }
                 }, 20); // Debounce wheel events
