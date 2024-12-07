@@ -1013,15 +1013,14 @@ select {
         position: relative;
         top: 10px;
     }
-
+    
     .hamburger {
         display: flex;
         margin-top: 20px;
         margin-right: 30px;
         position: relative;
-
     }
-
+    
     .nav ul {
         display: none;
         position: fixed;
@@ -1037,38 +1036,40 @@ select {
         padding: 0;
         z-index: 998;
     }
-
+    
     .nav ul.active {
         display: flex;
     }
-
+    
     .nav ul li {
         margin: 20px 0;
+        transform: translateX(100%);
+        opacity: 0;
     }
-
+    
     .nav ul li a {
         font-size: 1.5rem;
         color: white;
     }
-
+    
     /* Hamburger animation */
     .hamburger.active span:nth-child(1) {
         transform: rotate(45deg) translate(5px, 5px);
     }
-
+    
     .hamburger.active span:nth-child(2) {
         opacity: 0;
     }
-
+    
     .hamburger.active span:nth-child(3) {
         transform: rotate(-45deg) translate(7px, -7px);
     }
-
+    
     .menu-toggle {
         display: none;
     }
-
-    .logo{
+    
+    .logo {
         width: 10px;
     }
 
