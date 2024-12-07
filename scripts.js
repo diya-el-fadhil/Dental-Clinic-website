@@ -615,13 +615,25 @@ document.addEventListener('DOMContentLoaded', function() {
     const hamburger = document.querySelector('.hamburger');
     const navMenu = document.querySelector('.nav ul');
     const navLinks = document.querySelectorAll('.nav ul li');
+    const menuBackground = document.querySelector('.menu-background');
 
     hamburger.addEventListener('click', function() {
         hamburger.classList.toggle('active');
         navMenu.classList.toggle('active');
 
-        // Animate links
         if (navMenu.classList.contains('active')) {
+            // Background rows animation
+            menuBackground.style.display = 'block';
+            const rows = menuBackground.querySelectorAll('.bg-row');
+            rows.forEach((row, index) => {
+                row.style.width = '0%';
+                setTimeout(() => {
+                    row.style.width = '100%';
+                    row.style.transition = 'width 0.5s ease';
+                }, 100 * index);
+            });
+
+            // Links animation
             navLinks.forEach((link, index) => {
                 link.style.transform = 'translateX(100%)';
                 link.style.opacity = '0';
@@ -630,7 +642,13 @@ document.addEventListener('DOMContentLoaded', function() {
                     link.style.transition = 'transform 0.5s ease, opacity 0.5s ease';
                     link.style.transform = 'translateX(0)';
                     link.style.opacity = '1';
-                }, 100 * index);
+                }, 300 * index);
+            });
+        } else {
+            // Reset background when closing
+            const rows = menuBackground.querySelectorAll('.bg-row');
+            rows.forEach(row => {
+                row.style.width = '0%';
             });
         }
     });
