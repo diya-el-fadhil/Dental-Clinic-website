@@ -449,6 +449,66 @@ function initializeCarousel() {
     });
 }
 
+function addTouchSupport() {
+    const track = document.querySelector('.carousel-track');
+    const carouselItems = track.children;
+    
+    let touchStartX = 0;
+    let touchEndX = 0;
+    let initialTransform = 0;
+    
+    // Calculate scroll limits
+    const trackWidth = track.scrollWidth;
+    const viewportWidth = track.parentElement.clientWidth;
+    const maxScroll = -(trackWidth - viewportWidth);
+
+    track.addEventListener('touchstart', (e) => {
+        touchStartX = e.changedTouches[0].screenX;
+        initialTransform = new DOMMatrix(window.getComputedStyle(track).transform).e;
+    }, { passive: true });
+
+    track.addEventListener('touchmove', (e) => {
+        touchEndX = e.changedTouches[0].screenX;
+        const swipeDistance = touchEndX - touchStartX;
+        const newPosition = initialTransform + swipeDistance * 2;
+        
+        // Enforce scroll limits with elastic effect
+        const boundedPosition = Math.min(
+            0, 
+            Math.max(maxScroll, newPosition)
+        );
+        
+        gsap.to(track, {
+            x: boundedPosition,
+            duration: 0,
+            ease: "power1.out"
+        });
+    }, { passive: false });
+
+    track.addEventListener('touchend', (e) => {
+        const swipeDistance = touchEndX - touchStartX;
+        const absSwipeDistance = Math.abs(swipeDistance);
+        const currentTransform = new DOMMatrix(window.getComputedStyle(track).transform).e;
+        
+        if (absSwipeDistance > 50) {
+            if (swipeDistance > 0) {
+                updateCarousel('prev');
+            } else {
+                updateCarousel('next');
+            }
+        } else {
+            // Snap back to original position within limits
+            gsap.to(track, {
+                x: Math.min(0, Math.max(maxScroll, currentTransform)),
+                duration: 0.3,
+                ease: "power1.out"
+            });
+        }
+    }, { passive: true });
+}
+
+document.addEventListener('DOMContentLoaded', addTouchSupport);
+
 document.addEventListener('DOMContentLoaded', initializeCarousel);
 
 
@@ -550,3 +610,4 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 });
+

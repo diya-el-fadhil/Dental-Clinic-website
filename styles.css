@@ -940,6 +940,8 @@ select {
     fill: #f1f1f1;
 }
 
+
+
 /* Responsive typography base */
 
 /* Mobile devices */
@@ -1109,87 +1111,265 @@ select {
 
     /* Hide dividers as they're not needed in grid layout */
     .divider {
-        display: none;
+       display: none;
+    }
+
+    #page3 {
+        overflow: hidden;
+        height: auto !important; /* Override previous fixed height */
+        padding-bottom: 20px; /* Add some spacing at bottom */
+    }
+
+    .carousel-item {
+        width: 290px
+    }
+
+    #page4 {
+        margin-top: 0; /* Remove any top margin */
+        padding-top: 40px; /* Add padding at top */
+        height: auto;
+    }
+
+    #page4 h1 {
+        font-size: 40px;
+        margin-bottom: 0;
+        margin-top: -15px;
     }
 
     .item-container {
-        gap: 10px;
+        margin-top: 30px;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 8px;
+        padding: 0 10px;
         width: 100%;
+        max-width: 100%;
+        justify-items: center;
     }
 
+    /* Adjust individual items for 3-column layout */
     .item {
-        width: 160px;
-        height: 180px;
+        width: 100%;
+        max-width: 110px;
+        height: 140px;
+        padding: 5px;
+        margin: 0;
     }
 
     .item img {
-        height: 100px;
+        width: 100%;
+        height: 90px;
+        object-fit: contain;
+        margin-top: 5px;
     }
 
     .item p {
-        font-size: 16px;
+        font-size: 10px;
+        margin-top: 5px;
+        margin-bottom: 5px;
+        line-height: 1.2;
     }
+
+    #item10{
+        display: none;
+    }
+
 
     #page5 {
         height: auto;
-        padding: 20px;
+        padding: 20px 10px;
+        margin-top: 0;
+        position: relative;
+        width: 100% !important;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-position: -50px -70px;
     }
 
     #page5 h1 {
         position: relative;
-        top: 0;
+        top: 20px;
         left: 0;
         font-size: 30px;
-        text-align: center;
-    }
+        text-align: left;
+        width: 100%;
+        margin-bottom: 29px;
+        height: auto;
+        margin-left: 40px;
+        margin-top: 48px;
+        }
 
+    /* Adjust text container positioning */
     .lefty, .righty {
         position: relative;
-        text-align: center;
         right: 0;
         left: 0;
-        width: 100%;
-        box-sizing: border-box;
+        width: 90%;
+        margin: 10px auto;
+        text-align: left;
+        line-height: 1.6;
+    }
+
+    /* Reset absolute positioning for these elements */
+    #l1, #l2, #l3, #l4, #r1 {
+        position: relative;
+        width: 90%;
+        top: auto;
+        left: auto;
+        margin: 15px auto;
+    }
+
+    #r1{
+        font-size: 15px;
+    }
+
+    /* String container adjustments */
+    .string-container {
+        margin: 20px 0;
+        height: 150px;
+    }
+
+    #string {
+        width: 90%;
+    }
+
+    /* Ensure text is readable */
+    .lefty {
+        display: none;
+    }
+
+    .righty {
+        color: #2a2a2a;
+        margin-bottom: 20px;
+        font-weight: 500;
     }
 
     #page6 {
         flex-direction: column;
         width: 100%;
+        padding: 10px;
+        height: auto;
+    }
+
+    #page6h {
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+
+    .preview-section6 {
+        width: 100%;
+        margin-bottom: 20px; /* Move preview section above the form */
+        order: -1; /* Ensure it appears first in the mobile layout */
     }
 
     .form-section6 {
         margin: 0;
+        margin-bottom: 20px;
+        padding: 10px;
         max-height: none;
         width: 90%;
+        border-radius: 15px;
+        order: 0; /* Keep form in its default order */
     }
 
     .form-row6 {
         flex-direction: column;
         gap: 10px;
+        margin-bottom: 10px;
     }
 
-    #fullName, #age, #gender, #phone, #email, #appointmentDate {
+    .form-group6 {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    label {
+        margin-bottom: 5px;
+        font-size: 14px;
+    }
+
+    input, select {
+        width: 100%;
+        padding: 8px;
+        font-size: 14px;
+    }
+
+    #fullName, #age, #phone, #email, #appointmentDate {
         width: 90%;
+        border-radius: 10px;
+        margin: 0;
+    }
+
+    #gender {
+        width: 95%;
+        border-radius: 10px;
+        margin: 0;
+    }
+
+    .string-container {
+        margin-top: -20px;
     }
 
     .appointment-card {
-        width: 90%;
-        margin-top: 20px;
+        width: 100%;
+        margin: 10px;
+        margin-top: -20px;
+        padding: 15px;
+        display: flex;
+        flex-direction: column;
     }
+
+    .card-header {
+        justify-content: center;
+        text-align: center;
+        margin: 0;
+        padding: 0;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+
+    .card-title {
+        font-size: 24px;
+        margin: 0;
+        padding: 0;
+    }
+
 
     .card-content6 {
         flex-direction: column;
+        align-items: center;
+    }
+
+    .card-photo {
+        width: 120px;
+        height: 120px;
+        margin: 10px 0;
+    }
+
+    .card-field {
+        margin-left: 0;
+        font-size: 16px;
+        text-align: center;
     }
 
     #page7 {
         height: auto;
         width: 100% !important;
+        padding: 10px;
+        background-position: -50px 160px;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
 
     #page7h {
         width: 100%;
         font-size: 30px;
+        text-align: center;
     }
+
 
     #right7p {
         width: 90%;
@@ -1199,11 +1379,46 @@ select {
         margin: 0 auto;
     }
 
+    #Location7{
+        position: relative;
+        left: -60px;
+        top: 134px;
+    }
+
+    #LP7 {
+        position: relative;
+        left: -60px;
+        font-size: 12px;
+        top: 134px;
+    }
+
+    #Contact7 {
+        margin-left: -70px;
+        position: relative;
+        left: 150px;
+    }
+
+    #CP7 {
+        position: relative;
+        left: 150px;
+        margin-left: -70px;
+        font-size: 12px;
+    }
+
+    .CYP{
+        top: 20px;
+        left: 0px;
+        width: auto;
+        text-align: center;
+    }
+
     .SM7 {
-        left: 50%;
-        transform: translateX(-50%);
+        position: relative;
+        left: 0;
         gap: 1.5rem;
-        width: 90%;
+        width: auto;
+        bottom: 50%;
+        top: -90px;
     }
 
     /* Fix any absolute positioned elements */
