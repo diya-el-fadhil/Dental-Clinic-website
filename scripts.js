@@ -614,10 +614,25 @@ document.addEventListener('DOMContentLoaded', function() {
 document.addEventListener('DOMContentLoaded', function() {
     const hamburger = document.querySelector('.hamburger');
     const navMenu = document.querySelector('.nav ul');
+    const navLinks = document.querySelectorAll('.nav ul li');
 
     hamburger.addEventListener('click', function() {
         hamburger.classList.toggle('active');
         navMenu.classList.toggle('active');
+
+        // Animate links
+        if (navMenu.classList.contains('active')) {
+            navLinks.forEach((link, index) => {
+                link.style.transform = 'translateX(100%)';
+                link.style.opacity = '0';
+                
+                setTimeout(() => {
+                    link.style.transition = 'transform 0.5s ease, opacity 0.5s ease';
+                    link.style.transform = 'translateX(0)';
+                    link.style.opacity = '1';
+                }, 100 * index);
+            });
+        }
     });
 
     // Close menu when a link is clicked
