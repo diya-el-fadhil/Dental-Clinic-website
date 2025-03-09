@@ -1,6 +1,10 @@
 /* Base Responsive Styles */
+*{
+    cursor: none;
+}
 html {
     scroll-behavior: smooth;
+    cursor: none;
 }
 
 body{
@@ -11,6 +15,21 @@ body{
     overflow-x: hidden;
     min-width: 94.56vw;
     user-select: none;
+    cursor: none;
+}
+
+
+/* Custom Cursor */
+.custom-cursor {
+    position: fixed;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background-color: #4eadad;
+    pointer-events: none;
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+    transition: transform 0.1s ease-out;
 }
 
 /* Preloader container */
@@ -169,6 +188,7 @@ button {
     color: #ffffff;
     text-transform: uppercase;
     transition: background-color 0.3s ease, transform 0.3s ease;
+    cursor: none;
 }
 
 button:hover {
@@ -961,6 +981,19 @@ select {
     transition: all 0.3s ease-in-out;
 }
 
+/* Cursor Trail Dots */
+.cursor-trail {
+    position: fixed;
+    width: 10px;
+    height: 10px;
+    background-color: rgba(78, 173, 173, 0.5);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9998;
+    transform: translate(-50%, -50%);
+    transition: transform 0.2s ease-out, opacity 0.2s ease-out;
+}
+
 
 /* Responsive typography base */
 
@@ -1110,7 +1143,7 @@ select {
         font-size: 1rem;
         line-height: 1.8;
     }
-
+    
     /* ------------------- */
 
     #page2 {
@@ -1206,7 +1239,8 @@ select {
     }
 
     .carousel-item {
-        width: 290px
+        width: 290px;
+        -webkit-tap-highlight-color: transparent;
     }
 
     #page4 {
@@ -1394,7 +1428,13 @@ select {
 
     .string-container {
         margin-top: -20px;
+        -webkit-tap-highlight-color: transparent;
+        user-select: none;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
     }
+    
 
     .appointment-card {
         width: 100%;
