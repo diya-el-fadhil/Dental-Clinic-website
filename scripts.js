@@ -360,6 +360,23 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
+  document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+    anchor.addEventListener("click", function (e) {
+      e.preventDefault();
+      const target = document.querySelector(this.getAttribute("href"));
+      if (target) {
+        gsap.to(window, {
+          scrollTo: { y: target, offsetY: 50 },
+          duration: 1,
+          ease: "power2.out",
+        });
+      }
+      if(window.innerWidth < 600) {
+        closeMenu();
+      }
+    });
+  });
+
   // =====================
   // Section 3: Custom Cursor + Trail
   // =====================
@@ -439,16 +456,40 @@ $(document).ready(function () {
   });
 });
 
-document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-  anchor.addEventListener("click", function (e) {
-    e.preventDefault();
-    const target = document.querySelector(this.getAttribute("href"));
-    if (target) {
-      gsap.to(window, {
-        scrollTo: { y: target, offsetY: 50 },
-        duration: 1,
-        ease: "power2.out",
-      });
+const scriptURL = 'https://script.google.com/macros/s/AKfycbxJGrDh6j4OcEUb6hgW5Cxgo5yUnLIhVVPFRRaFNMfjpHgQMxBCZDnmSlz6di4qvA0/exec';
+
+function showToast(message) {
+  const toast = document.createElement('div');
+  toast.className = 'toast';
+  toast.textContent = message;
+  document.body.appendChild(toast);
+  setTimeout(() => toast.classList.add('show'), 100); // animate in
+  setTimeout(() => {
+    toast.classList.remove('show'); // animate out
+    setTimeout(() => toast.remove(), 300);
+  }, 4000); // show for 4 sec
+}
+
+document.querySelector('form').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  console.log('Form submitted');
+
+  const form = e.target;
+  const formData = new FormData(form);
+
+  try {
+    const res = await fetch(scriptURL, {
+      method: 'POST',
+      body: formData // <-- FormData avoids CORS preflight!
+    });
+
+    if (res.ok) {
+      showToast('Appointment successful! You will get a callback shortly.');
+      form.reset();
+    } else {
+      showToast('Submission failed. Please try again.');
     }
-  });
+  } catch (err) {
+    console.error('Error!', err.message);
+  }
 });
