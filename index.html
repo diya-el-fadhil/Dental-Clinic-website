@@ -10,6 +10,14 @@
         <meta name="author" content="Dr. Gasal's Clinic">
         <meta name="robots" content="index, follow">
         <link rel="stylesheet" href="styles.css">
+        <link rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"
+            integrity="sha512-tS3S5qG0BlhnQROyJXvNjeEM4UpMXHrQfTGmbQ1gKmelCxlSEBUaxhRBj/EFTzpbP4RVSrpEikbmdJobCvhE3g=="
+            crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css"
+            integrity="sha512-sMXtMNL1zRzolHYKEujM2AqCLUR9F2C4/05cdbxjjLSRvMQIciEPCQZo++nk7go3BtSuK9kfa/s+a4f4i5pLkw=="
+            crossorigin="anonymous" referrerpolicy="no-referrer" />
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link
@@ -69,7 +77,21 @@
             <section class="page" id="page2" aria-labelledby="about-us-heading">
                 <div class="left-contain">
                     <h2 id="about-us-heading">About Us</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae minus fugit dolorum suscipit, voluptates facere. Magnam natus suscipit repellendus, voluptas dolore quod obcaecati delectus esse laborum hic repellat? Reiciendis velit architecto facilis dicta iste itaque expedita tempore neque blanditiis molestiae, nam id provident eaque natus. Quam pariatur non voluptatem, sunt porro nesciunt illum, quos necessitatibus quas inventore vitae dignissimos laborum! Minus nostrum quia quidem aut odit quis, a mollitia labore. Officiis minus provident fugiat, ex odio aliquam assumenda cumque natus culpa iusto aspernatur architecto nulla illo? Dignissimos saepe, inventore voluptates tenetur quisquam facilis, neque aperiam nam magnam deleniti magni necessitatibus!</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                        Quae minus fugit dolorum suscipit, voluptates facere.
+                        Magnam natus suscipit repellendus, voluptas dolore quod
+                        obcaecati delectus esse laborum hic repellat? Reiciendis
+                        velit architecto facilis dicta iste itaque expedita
+                        tempore neque blanditiis molestiae, nam id provident
+                        eaque natus. Quam pariatur non voluptatem, sunt porro
+                        nesciunt illum, quos necessitatibus quas inventore vitae
+                        dignissimos laborum! Minus nostrum quia quidem aut odit
+                        quis, a mollitia labore. Officiis minus provident
+                        fugiat, ex odio aliquam assumenda cumque natus culpa
+                        iusto aspernatur architecto nulla illo? Dignissimos
+                        saepe, inventore voluptates tenetur quisquam facilis,
+                        neque aperiam nam magnam deleniti magni
+                        necessitatibus!</p>
                 </div>
 
                 <div class="right-section">
@@ -130,11 +152,8 @@
 
                 <div class="meet-us">
                     <h2 id="clinic-stats-heading">Meet Us</h2>
-                    <div class="carousel" aria-roledescription="carousel"
-                        aria-label="Our Team">
-                        <button class="carousel-btn prev-btn"
-                            aria-label="Previous doctor">←</button>
-                        <div class="carousel-track">
+                    <div class="c-main">
+                        <div class="carousel-track owl-carousel">
                             <div class="carousel-item">
                                 <img src="./assets/Aksar blk.png"
                                     data-hover-src="./assets/Aksar.png"
@@ -182,8 +201,6 @@
                                 </div>
                             </div>
                         </div>
-                        <button class="carousel-btn next-btn"
-                            aria-label="Next doctor">→</button>
                     </div>
                 </div>
             </section>
@@ -240,24 +257,22 @@
 
             <section class="page" id="page5"
                 aria-labelledby="why-choose-us-heading">
-                <h1 id="why-choose-us-heading">Why <br>Choose Us!</h1>
-                <p class="lefty" id="l1">[Benefit 1: Explain a key reason to
-                    choose your clinic. Focus on patient benefits, unique
-                    selling propositions like advanced technology, experienced
-                    doctors, or patient comfort. Replace this placeholder
-                    text.]</p>
-                <p class="lefty" id="l2">[Benefit 2: Describe another compelling
-                    reason. Perhaps highlight specialized treatments or a
-                    patient-centric approach. Replace this placeholder
-                    text.]</p>
-                <p class="lefty" id="l3">[Benefit 3: Add a further advantage of
-                    your clinic. This could be about affordability, location
-                    convenience, or comprehensive care. Replace this placeholder
-                    text.]</p>
-                <p class="righty" id="r1">[Further elaboration or additional
-                    benefits. Expand on why patients should trust Dr. Gasal's
-                    clinic with their dental health. Ensure this content is
-                    unique and valuable. Replace this placeholder text.]</p>
+                <div class="overlay"></div>
+                <div class="content">
+                    <h1 id="why-choose-us-heading">Why <br><span>Choose
+                            Us!</span></h1>
+                    <div class="l-b">
+                        <p class="lefty" id="l1">State-of-the-art technology
+                            ensuring top-notch diagnostics and treatment
+                            precision for every patient.</p>
+                        <p class="lefty" id="l2">Highly experienced doctors with
+                            a patient-first approach and personalized care
+                            plans.</p>
+                        <p class="lefty" id="l3">Affordable pricing, easy access
+                            location, and a holistic approach to complete
+                            wellness.</p>
+                    </div>
+                </div>
             </section>
 
             <div class="string-container" aria-hidden="true">
@@ -349,66 +364,69 @@
             </section>
         </main>
 
-        <footer class="page" id="page7" aria-labelledby="contact-us-heading">
-            <h1 id="contact-us-heading">Contact us for more INFORMATION</h1>
-            <p id="right7p">[Brief encouraging message to contact the clinic.
-                Replace placeholder.]</p>
-            <button id="RU">Rate Us</button>
-
-            <address>
-                <section aria-labelledby="location-heading">
-                    <h2 class="Head7" id="location-heading">Location</h2>
-                    <p class="Par7" id="LP7">
-                        <strong>Clinic 1:</strong><br> Hyson Building, <br>
-                        Kodungallur, <br> Kerala 680669 <br> <br>
-                        <strong>Clinic 2:</strong><br> Konathukunnu, <br>
-                        Thekkumkara, <br> Kerala 680123 <br> <br>
-                        <strong>Clinic 3:</strong><br> Konathukunnu, <br>
-                        Thekkumkara, <br> Kerala 680123
-                    </p>
-                </section>
-
-                <section aria-labelledby="contact-info-heading">
-                    <h2 class="Head7" id="contact-info-heading">Contact</h2>
-                    <p class="Par7" id="CP7">
-                        <strong>Clinic 1:</strong><br> <a
-                            href="tel:8281098216">8281098216</a> <br> <a
-                            href="mailto:gasals@example.com">gasals@example.com</a>
-                        <br><br>
-                        <strong>Clinic 2:</strong><br> <a
-                            href="tel:8086242342">8086242342</a> <br> <a
-                            href="mailto:gasals@example.com">gasals@example.com</a>
-                        <br><br>
-                        <strong>Clinic 3:</strong><br> <a
-                            href="tel:8086242342">8086242342</a> <br> <a
-                            href="mailto:gasals@example.com">gasals@example.com</a>
-                    </p>
-                </section>
-            </address>
-            <div class="SM7" aria-label="Social Media Links">
-                <a href="#" target="_blank" rel="noopener noreferrer"
-                    aria-label="Visit our Facebook page">
-                    <img src="./assets/facebook-circle-fill (2).svg"
-                        alt="Facebook icon">
-                </a>
-                <a href="#" target="_blank" rel="noopener noreferrer"
-                    aria-label="Visit our Instagram profile">
-                    <img src="./assets/instagram-fill (2).svg"
-                        alt="Instagram icon">
-                </a>
-                <a href="tel:8281098216" aria-label="Call us"> <img
-                        src="./assets/phone-fill (1).svg" alt="Phone icon">
-                </a>
-                <a href="https://wa.me/918281098216" target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="Chat with us on WhatsApp"> <img
-                        src="./assets/whatsapp-fill (2).svg"
-                        alt="WhatsApp icon">
-                </a>
+        <footer class="footer" id="page7" aria-labelledby="contact-us-heading">
+            <div class="footer-top">
+                <h1 id="contact-us-heading">Contact Us for More Information</h1>
+                <p class="footer-description">We're here to help you smile
+                    brighter! <br>
+                    Reach out to schedule a consultation or get your
+                    questions answered.</p>
             </div>
-            <pre
-                class="CYP">Copyright © AUZY   <a href="/privacy-policy">Privacy</a>  |  <a href="/terms-of-service">Terms of Services</a></pre>
+
+            <div class="footer-content">
+                <address class="footer-section">
+                    <h3 class="footer-heading">Location</h3>
+                    <ul class="footer-list">
+                        <li><strong>Clinic 1:</strong><br>Hyson Building,
+                            Kodungallur, <br> Kerala 680669 <br>
+                            <a
+                                href="tel:8281098216">8281098216</a><br><a
+                                href="mailto:gasals@example.com">gasals@example.com</a></li>
+                        <li><strong>Clinic 2:</strong><br>Konathukunnu,
+                            Thekkumkara, <br> Kerala 680123 <br>
+                            <a
+                                href="tel:8086242342">8086242342</a><br><a
+                                href="mailto:gasals@example.com">gasals@example.com</a></li>
+                        <li><strong>Clinic 3:</strong><br>Konathukunnu,
+                            Thekkumkara, <br> Kerala 680123 <br>
+                            <a
+                                href="tel:8086242342">8086242342</a><br><a
+                                href="mailto:gasals@example.com">gasals@example.com</a></li>
+                    </ul>
+                </address>
+            </div>
+
+            <div class="footer-social" aria-label="Social Media Links">
+                <a href="#" aria-label="Facebook" target="_blank"
+                    rel="noopener"><img
+                        src="./assets/facebook-circle-fill (2).svg"
+                        alt="Facebook"></a>
+                <a href="#" aria-label="Instagram" target="_blank"
+                    rel="noopener"><img src="./assets/instagram-fill (2).svg"
+                        alt="Instagram"></a>
+                <a href="tel:8281098216" aria-label="Call Us"><img
+                        src="./assets/phone-fill (1).svg" alt="Phone"></a>
+                <a href="https://wa.me/918281098216" aria-label="WhatsApp Chat"
+                    target="_blank" rel="noopener"><img
+                        src="./assets/whatsapp-fill (2).svg" alt="WhatsApp"></a>
+            </div>
+
+            <div class="footer-bottom">
+                <small>
+                    © AUZY • <a href="/privacy-policy">Privacy Policy</a> | <a
+                        href="/terms-of-service">Terms of Service</a>
+                </small>
+            </div>
         </footer>
+
+        <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+            integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"
+            integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw=="
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
         <script
             src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
@@ -416,6 +434,9 @@
             src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
         <script
             src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/TextPlugin.min.js"></script>
+        <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollToPlugin.min.js"></script>
+
         <script src="scripts.js"></script>
     </body>
 </html>

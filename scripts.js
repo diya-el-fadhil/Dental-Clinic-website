@@ -10,7 +10,7 @@ window.addEventListener("load", function () {
 });
 
 // Register GSAP plugins
-gsap.registerPlugin(ScrollTrigger, TextPlugin);
+gsap.registerPlugin(ScrollTrigger, TextPlugin, ScrollToPlugin);
 
 // Add required animation styles
 (function injectAnimationStyles() {
@@ -96,14 +96,8 @@ function createLandingAnimations() {
     }
   );
 
-  gsap.set([".hero p", ".hero a", ".nav img.logo", ".nav ul", ".nav button"], {
-    y: 30,
-    opacity: 0,
-  });
-
   // Animate
   tl.to(".nav img.logo", { y: 0, opacity: 1, duration: 0.8 })
-    .to(".nav ul", { y: 0, opacity: 1, duration: 0.8, stagger: 0.1 }, "-=0.6")
     .to(".nav button", { y: 0, opacity: 1, duration: 0.8 }, "-=0.6")
     .to(
       ".hero h1 .left-container span",
@@ -138,7 +132,7 @@ function createLandingAnimations() {
     );
 }
 
-// About section animation using ScrollTrigger
+// About section animation
 function createAboutAnimations() {
   const elements = [
     ".left-contain",
@@ -189,7 +183,7 @@ function initializeAnimations() {
   createAboutAnimations();
 }
 
-// Fire when DOM is ready (unneeded if using defer, but safe for fallback)
+// Fire when DOM is ready
 if (document.readyState === "loading") {
   document.addEventListener("DOMContentLoaded", initializeAnimations);
 } else {
@@ -360,9 +354,11 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   // Close menu on link click
-  document.querySelectorAll(".nav ul li a").forEach((link) => {
-    link.addEventListener("click", closeMenu);
-  });
+  if (window.width > 600) {
+    document.querySelectorAll(".nav ul li a").forEach((link) => {
+      link.addEventListener("click", closeMenu);
+    });
+  }
 
   // =====================
   // Section 3: Custom Cursor + Trail
@@ -414,5 +410,45 @@ document.addEventListener("DOMContentLoaded", function () {
     elem.addEventListener("mouseleave", () => {
       cursor.style.transform = "translate(-50%, -50%) scale(1)";
     });
+  });
+});
+
+$(document).ready(function () {
+  var owl = $(".owl-carousel");
+  owl.owlCarousel({
+    items: 4,
+    loop: true,
+    margin: 10,
+    autoplay: true,
+    autoplayTimeout: 1000,
+    autoplayHoverPause: true,
+    responsive: {
+      0: {
+        items: 1,
+      },
+      600: {
+        items: 2,
+      },
+      1000: {
+        items: 4,
+      },
+      1200: {
+        items: 5,
+      },
+    },
+  });
+});
+
+document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+  anchor.addEventListener("click", function (e) {
+    e.preventDefault();
+    const target = document.querySelector(this.getAttribute("href"));
+    if (target) {
+      gsap.to(window, {
+        scrollTo: { y: target, offsetY: 50 },
+        duration: 1,
+        ease: "power2.out",
+      });
+    }
   });
 });

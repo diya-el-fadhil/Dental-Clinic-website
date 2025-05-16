@@ -9,7 +9,7 @@ body {
   background-color: #ffffff;
   overflow-x: hidden;
   min-width: 94.56vw;
-  cursor: none;
+  /* cursor: none; */
 }
 
 ::-webkit-scrollbar {
@@ -84,7 +84,7 @@ body {
   color: white;
   font-size: 1.2rem;
   font-weight: bold;
-  text-transform: uppercase;
+  /* text-transform: uppercase; */
   z-index: 10;
 }
 
@@ -108,16 +108,13 @@ body {
 }
 
 .page {
-  margin: 0;
-  padding: 0;
-  height: 100vh;
-  width: 100%;
   background-color: rgb(255, 255, 255);
 }
 
 #page1 {
   background-image: url("https://images.unsplash.com/photo-1670250721717-889b17349fc4");
   background-size: cover;
+  height: 100vh;
   background-position: center;
 }
 
@@ -128,7 +125,7 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(73, 73, 73, 0.118);  
+  background: rgba(73, 73, 73, 0.118);
   backdrop-filter: blur(7px);
   z-index: 1;
 }
@@ -136,6 +133,7 @@ body {
 .hero {
   position: relative;
   display: flex;
+  margin: 4rem 0;
   align-items: center;
   justify-content: center;
   flex-direction: column;
@@ -164,7 +162,7 @@ body {
 #appoi {
   display: flex;
   align-items: center;
-  padding: 10px 20px;
+  padding: 0.5em 1rem;
   border: none;
   border-radius: 5px;
   cursor: pointer;
@@ -212,6 +210,10 @@ body {
   overflow: hidden;
   padding: 3rem;
   box-sizing: border-box;
+}
+
+.carousel-item {
+  cursor: none !important;
 }
 
 .left-contain {
@@ -349,36 +351,14 @@ body {
 }
 
 .meet-us {
-  margin-top: 40px;
   text-align: center;
+  padding-bottom: 5rem;
+  padding-top: 2rem;
 }
 
 .meet-us h1 {
   font-size: 50px;
   color: #2a2a2a;
-}
-
-/* Container for the carousel with clip effect */
-.carousel {
-  position: relative;
-  width: 90%;
-  margin: 2rem auto;
-  overflow: hidden;
-}
-
-/* Ensure carousel-track fills the container */
-.carousel-track {
-  display: flex;
-  gap: 2.5rem; /* Increased gap between items */
-  transition: transform 0.6s cubic-bezier(0.25, 0.1, 0.25, 1);
-  margin: 0 10px;
-  padding: 20px;
-  padding-left: 40px;
-  padding-right: 40px;
-  clip-path: inset(0 2% 0 2%);
-  -webkit-clip-path: inset(0 2% 0 2%);
-  position: relative;
-  z-index: 1;
 }
 
 .carousel-item {
@@ -387,46 +367,8 @@ body {
   overflow: hidden;
   cursor: pointer;
   transition: all 0.5s ease;
-  height: 400px;
-  width: 280px;
+  margin: 0px 0.5rem;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-}
-
-/* Position buttons */
-.carousel-btn {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: rgba(255, 255, 255, 0.9);
-  color: #333;
-  border: none;
-  width: 3rem;
-  height: 3rem;
-  border-radius: 50%;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  z-index: 2;
-}
-
-.prev-btn {
-  left: -20%;
-}
-
-.next-btn {
-  right: -20%;
-}
-
-/* Enhance button visibility */
-.carousel-btn:hover {
-  background: white;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-  transform: translateY(-50%) scale(1.1);
-}
-
-.carousel-btn:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
 }
 
 .carousel-item img {
@@ -453,22 +395,10 @@ body {
   transform: translateY(0);
 }
 
-.carousel-item h4 {
-  margin: 0;
-  font-size: 1.25rem;
-  font-weight: 600;
-}
-
-.carousel-item p {
-  margin: 0.5rem 0 0;
-  font-size: 1rem;
-  opacity: 0.9;
-}
-
 .meet-us h2 {
   font-size: 2.5rem;
   color: #333;
-  margin-bottom: 2rem;
+  margin: 0 !important;
   font-weight: 600;
 }
 
@@ -478,7 +408,7 @@ body {
   flex-direction: column;
   width: 100vw;
   max-width: 100%;
-  padding: 20px;
+  padding: 5rem;
   box-sizing: border-box;
   background-color: #2a2a2a;
   text-align: center;
@@ -488,7 +418,6 @@ body {
 }
 
 #page4 h1 {
-  margin-bottom: 20px;
   font-size: 50px;
   color: #ffffff;
 }
@@ -500,7 +429,7 @@ body {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 15px; /* Reduced gap between items */
+  gap: 50px; /* Reduced gap between items */
   max-width: 95%;
   box-sizing: border-box;
 }
@@ -536,74 +465,76 @@ body {
   color: #2a2a2a;
   font-weight: 600;
   text-transform: uppercase;
+  z-index: 999;
   margin-bottom: 10px;
 }
-
 #page5 {
-  background-image: url("./assets/Background.png");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  height: 100vh;
-  margin-top: -23px;
   position: relative;
+  height: 100vh;
   padding: 40px;
-  width: 94.56vw;
-  max-width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  color: white;
+}
+
+#page5 .overlay {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: #f1f1f1;
+  backdrop-filter: blur(4px);
+}
+
+#page5 .content {
+  position: relative;
+  z-index: 2;
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 20px;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
 }
 
 #page5 h1 {
-  position: absolute;
-  top: 190px;
-  left: 120px;
-  font-size: 50px;
+  font-size: 3.5em;
   color: #2a2a2a;
+  margin-bottom: 2rem;
+  font-weight: 800;
+  text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3);
 }
 
 .lefty {
-  position: relative;
-  text-align: right;
-  color: white;
-  right: 120px;
-  line-height: 34px;
-}
-
-.righty {
-  position: relative;
-  text-align: left;
+  font-size: 1.6rem;
+  font-weight: 700;
   color: #2a2a2a;
-  line-height: 34px;
-  left: 120px;
-  font-weight: 600;
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+  border-left: 4px solid #2a2a2a;
+  padding-left: 1rem;
+  transition: all 0.3s ease-in-out;
 }
 
-#l1 {
-  position: absolute;
-  width: 1000px;
+.lefty:hover {
+  transform: translateX(5px);
 }
 
-#l2 {
-  position: absolute;
-  width: 900px;
-  top: 174px;
+.l-b {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
 }
 
-#l3 {
-  position: absolute;
-  width: 300px;
-  top: 275px;
-}
+/* Responsive */
+@media (max-width: 768px) {
+  #page5 h1 {
+    font-size: 2.5em;
+  }
 
-#l4 {
-  position: absolute;
-  width: 1000px;
-  top: 160px;
-}
-
-#r1 {
-  position: absolute;
-  width: 850px;
-  top: 360px;
+  .lefty {
+    font-size: 1.1rem;
+  }
 }
 
 .string-container {
@@ -646,6 +577,7 @@ body {
   align-items: center;
   justify-content: center;
   padding: 20px;
+  margin: 3rem 0;
 }
 
 #page6h {
@@ -828,10 +760,6 @@ select {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  height: 90vh;
-  margin-top: -23px;
-  padding: 40px;
-  width: 94.56vw;
 }
 
 #page7h {
@@ -970,6 +898,115 @@ select {
   transition: transform 0.2s ease-out, opacity 0.2s ease-out;
 }
 
+.footer {
+  background-color: #0f172a;
+  color: #f1f5f9;
+  padding: 2rem;
+  font-family: "Poppins", sans-serif;
+}
+
+.footer-top {
+  text-align: right;
+  color: #2a2a2a;
+  margin-bottom: 2rem;
+}
+
+.footer-top h1 {
+  font-size: 3rem;
+  margin: 0.5rem !important;
+}
+
+.footer-top p {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #2a2a2a;
+  text-align: right;
+}
+
+.footer-description {
+  margin: 0.5rem 0 1rem;
+  font-size: 1rem;
+  color: #94a3b8;
+}
+
+.footer-content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+}
+
+.footer-section {
+  flex: 1 1 250px;
+  margin: 1rem;
+}
+
+.footer-heading {
+  font-size: 1.5rem;
+  text-decoration: underline;
+  margin-bottom: 0.75rem;
+  color: white;
+}
+
+.footer-list {
+  list-style: none;
+  padding: 0;
+  line-height: 1.6;
+  font-size: 1.2rem;
+}
+
+.footer-list li {
+  margin-bottom: 0.5rem;
+}
+
+.footer-list a {
+  color: #93c5fd;
+  text-decoration: none;
+}
+
+.footer-list a:hover {
+  text-decoration: underline;
+}
+
+.footer-social {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.footer-social img {
+  width: 32px;
+  height: 32px;
+  transition: transform 0.2s ease;
+}
+
+.footer-social a:hover img {
+  transform: scale(1.1);
+}
+
+.footer-bottom {
+  text-align: center;
+  font-size: 0.875rem;
+  color: #94a3b8;
+}
+
+.footer-bottom a {
+  color: white;
+  text-decoration: none;
+}
+
+.footer-bottom a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+  .footer-content {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
 /* Responsive typography base */
 
 /* Mobile devices */
@@ -986,13 +1023,6 @@ select {
   body {
     min-width: 100%;
     width: 100%;
-  }
-
-  /* Container controls */
-  .page {
-    width: 100%;
-    max-width: 100%;
-    overflow-x: hidden;
   }
 
   #page1,
@@ -1241,7 +1271,6 @@ select {
   #page4 h1 {
     font-size: 40px;
     margin-bottom: 0;
-    margin-top: -15px;
   }
 
   .item-container {
