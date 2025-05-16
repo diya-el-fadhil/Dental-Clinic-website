@@ -418,9 +418,9 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   if (window.innerWidth < 600) {
-    cursor.style.display = "none";
+    cursor.style.display = "none !important";
     trail.forEach((dot) => {
-      dot.style.display = "none";
+      dot.style.display = "none !important";
     });
   }
 
