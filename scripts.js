@@ -15,34 +15,34 @@ gsap.registerPlugin(ScrollTrigger, TextPlugin, ScrollToPlugin);
 // Add required animation styles
 (function injectAnimationStyles() {
   const styleContent = `
-    .hero h1 {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 0.5rem;
-      overflow: hidden;
-      opacity: 1 !important; /* Prevent FOUC */
-    }
-    .hero h1 .left-container,
-    .hero h1 .right-container {
-      display: inline-flex;
-      overflow: hidden;
-    }
-    .hero h1 span {
-      display: inline-block;
-      white-space: pre;
-      transform: translateY(100%);
-      opacity: 0;
-    }
-    .hero h1 .left-container {
-      transform-origin: right center;
-      text-align: right;
-    }
-    .hero h1 .right-container {
-      transform-origin: left center;
-      text-align: left;
-    }
-  `;
+      .hero h1 {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 0.5rem;
+        overflow: hidden;
+        opacity: 1 !important; /* Prevent FOUC */
+      }
+      .hero h1 .left-container,
+      .hero h1 .right-container {
+        display: inline-flex;
+        overflow: hidden;
+      }
+      .hero h1 span {
+        display: inline-block;
+        white-space: pre;
+        transform: translateY(100%);
+        opacity: 0;
+      }
+      .hero h1 .left-container {
+        transform-origin: right center;
+        text-align: right;
+      }
+      .hero h1 .right-container {
+        transform-origin: left center;
+        text-align: left;
+      }
+    `;
   if (!document.querySelector("#animation-styles")) {
     const style = document.createElement("style");
     style.id = "animation-styles";
@@ -62,9 +62,9 @@ function breakText() {
     arr.map((ch) => `<span>${ch === " " ? "&nbsp;" : ch}</span>`).join("");
 
   heroH1.innerHTML = `
-    <div class="left-container">${spanWrap(chars.slice(0, mid))}</div>
-    <div class="right-container">${spanWrap(chars.slice(mid))}</div>
-  `;
+      <div class="left-container">${spanWrap(chars.slice(0, mid))}</div>
+      <div class="right-container">${spanWrap(chars.slice(mid))}</div>
+    `;
 }
 
 // Landing page animation
@@ -371,7 +371,7 @@ document.addEventListener("DOMContentLoaded", function () {
           ease: "power2.out",
         });
       }
-      if(window.innerWidth < 600) {
+      if (window.innerWidth < 600) {
         closeMenu();
       }
     });
@@ -417,6 +417,13 @@ document.addEventListener("DOMContentLoaded", function () {
     requestAnimationFrame(animateTrail);
   }
 
+  if (window.innerWidth < 600) {
+    cursor.style.display = "none";
+    trail.forEach((dot) => {
+      dot.style.display = "none";
+    });
+  }
+
   animateTrail();
 
   // Optional hover effects
@@ -456,40 +463,41 @@ $(document).ready(function () {
   });
 });
 
-const scriptURL = 'https://script.google.com/macros/s/AKfycbxJGrDh6j4OcEUb6hgW5Cxgo5yUnLIhVVPFRRaFNMfjpHgQMxBCZDnmSlz6di4qvA0/exec';
+const scriptURL =
+  "https://script.google.com/macros/s/AKfycbxJGrDh6j4OcEUb6hgW5Cxgo5yUnLIhVVPFRRaFNMfjpHgQMxBCZDnmSlz6di4qvA0/exec";
 
 function showToast(message) {
-  const toast = document.createElement('div');
-  toast.className = 'toast';
+  const toast = document.createElement("div");
+  toast.className = "toast";
   toast.textContent = message;
   document.body.appendChild(toast);
-  setTimeout(() => toast.classList.add('show'), 100); // animate in
+  setTimeout(() => toast.classList.add("show"), 100); // animate in
   setTimeout(() => {
-    toast.classList.remove('show'); // animate out
+    toast.classList.remove("show"); // animate out
     setTimeout(() => toast.remove(), 300);
   }, 4000); // show for 4 sec
 }
 
-document.querySelector('form').addEventListener('submit', async (e) => {
+document.querySelector("form").addEventListener("submit", async (e) => {
   e.preventDefault();
-  console.log('Form submitted');
+  console.log("Form submitted");
 
   const form = e.target;
   const formData = new FormData(form);
 
   try {
     const res = await fetch(scriptURL, {
-      method: 'POST',
-      body: formData // <-- FormData avoids CORS preflight!
+      method: "POST",
+      body: formData, // <-- FormData avoids CORS preflight!
     });
 
     if (res.ok) {
-      showToast('Appointment successful! You will get a callback shortly.');
+      showToast("Appointment successful! You will get a callback shortly.");
       form.reset();
     } else {
-      showToast('Submission failed. Please try again.');
+      showToast("Submission failed. Please try again.");
     }
   } catch (err) {
-    console.error('Error!', err.message);
+    console.error("Error!", err.message);
   }
 });
